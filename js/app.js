@@ -10,3 +10,12 @@ class Task {
         this.completed = completed;
     }
 }
+
+class User {
+    constructor(firstName, lastName, password, task = []) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.tasks = task;
+    }
+}
