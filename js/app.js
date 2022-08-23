@@ -1,5 +1,5 @@
-// Task function take 
 
+// Task class take 6 params this function will carry task object  
 class Task {
     constructor(title, date, details, note, priority, completed = false) {
         this.title = title;
@@ -11,6 +11,7 @@ class Task {
     }
 }
 
+// user class take 4 params this function will carry user object  
 class User {
     constructor(firstName, lastName, password, task = []) {
         this.firstName = firstName;
