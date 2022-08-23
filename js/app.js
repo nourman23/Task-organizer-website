@@ -8,6 +8,16 @@ class Task {
         this.note = note;
         this.priority = priority;
         this.completed = completed;
+        this.remainTime = this.calculateRemainTime(date);
+    }
+
+    // calculateRemainTime it's a method take date time as string and return remain day 
+    calculateRemainTime(dateAsString) {
+        let date1 = new Date();
+        let date2 = new Date(dateAsString);
+        let time = date2.getTime() - date1.getTime();
+        let days = time / (1000 * 3600 * 24);
+        return Math.floor(days)
     }
 }
 
@@ -20,3 +30,4 @@ class User {
         this.tasks = task;
     }
 }
+
