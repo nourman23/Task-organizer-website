@@ -5,7 +5,7 @@ class Task {
         this.title = title;
         this.date = date;
         this.details = details;
-        this.note = note;
+        this.note = note;``
         this.priority = priority;
         this.completed = completed;
         this.remainTime = this.calculateRemainTime(date);
@@ -31,28 +31,6 @@ class User {
         this.isLogged = isLogged;
     }
 }
-
-let container = document.getElementById('container')
-
-toggle = () => {
-	container.classList.toggle('sign-in')
-	container.classList.toggle('sign-up')
-}
-
-setTimeout(() => {
-	container.classList.add('sign-in')
-}, 200)
-
-signInBtn.addEventListener("click", () => {
-	container.classList.remove("right-panel-active");
-});
-
-signUpBtn.addEventListener("click", () => {
-	container.classList.add("right-panel-active");
-});
-
-fistForm.addEventListener("submit", (e) => e.preventDefault());
-secondForm.addEventListener("submit", (e) => e.preventDefault());
 
 // side_tasks-form
 $(function(){
