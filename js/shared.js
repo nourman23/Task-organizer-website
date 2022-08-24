@@ -23,11 +23,12 @@ class Task {
 
 // user class take 4 params this function will carry user object  
 class User {
-    constructor(firstName, lastName, password, task = [], isLogged = true) {
+    constructor(firstName, lastName, email, password, task = [], isLogged = true) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.tasks = task;
         this.isLogged = isLogged;
+        this.email = email;
     }
 }
