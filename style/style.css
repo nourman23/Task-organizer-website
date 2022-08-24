@@ -252,6 +252,33 @@ main {
   width: 100px;
   color: white;
   background: #7386d5;
+  transform: translateX(-100%);
+}
+#sidebar2 li {
+  cursor: pointer;
+  position: relative;
+}
+#sidebar2 li span {
+  position: absolute;
+  width: 150px;
+  background-color: #435dc4;
+  text-align: center;
+  padding: 10px;
+  margin-left: 10px;
+  display: none;
+}
+#sidebar2 li span::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #435dc4 transparent transparent;
+}
+#sidebar2 li:hover span {
+  display: initial;
 }
 .side2components {
   height: 60vh;
@@ -306,7 +333,13 @@ main {
 }
 @media (min-width: 950px) {
   .wrapper #sidebar2 {
-    transform: translateX(-100%);
     transition: 0.5s ease;
+  }
+}
+
+@media (max-width: 450px) {
+  #sidebar2 {
+    width: 50px;
+    font-size: 15px;
   }
 }

@@ -21,11 +21,11 @@
       <nav id="sidebar1">
         <div class="sidebar-header">
           <h3 class="text-center">Welcome</h3>
-          <!-- <p class="text-center">Dummy Heading</p> -->
         </div>
 
         <ul class="list-unstyled components">
-          <li class="withIcon">
+          <!-- newTask,byPriority,byStatus,Saved,logOut classes to use it in js query selector -->
+          <li class="withIcon newTask">
             <ion-icon name="add-circle-outline"></ion-icon>
             <a href="#">New task</a>
           </li>
@@ -38,7 +38,7 @@
               class="dropdown-toggle"
               >Filter by priority</a
             >
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <ul class="collapse list-unstyled byPriority" id="homeSubmenu">
               <li>
                 <a href="#">Critical</a>
               </li>
@@ -60,7 +60,7 @@
               class="dropdown-toggle"
               >Filter by state</a
             >
-            <ul class="collapse list-unstyled" id="pageSubmenu">
+            <ul class="collapse list-unstyled byStatus" id="pageSubmenu">
               <li>
                 <a href="#">complete</a>
               </li>
@@ -69,36 +69,43 @@
               </li>
             </ul>
           </li>
-          <li class="withIcon">
-            <ion-icon name="bookmark-outline"></ion-icon> <a href="#">Saved</a>
+          <li class="withIcon Saved">
+            <ion-icon name="bookmark-outline"></ion-icon>
+            <a href="#">Saved</a>
           </li>
-          <li class="withIcon">
-            <ion-icon name="log-out-outline"></ion-icon> <a href="#">Logout</a>
+          <li class="withIcon logOut">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <a href="#">Logout</a>
           </li>
         </ul>
       </nav>
-
       <nav id="sidebar2">
         <ul class="list-unstyled side2components">
-          <li class="withIcon">
+          <li class="newTask">
             <ion-icon name="add-circle-outline"></ion-icon>
+            <span>New task</span>
           </li>
-          <li class="active">
+          <li class="byPriority">
             <ion-icon name="filter-outline"></ion-icon>
+            <span>Filter by priority</span>
           </li>
 
-          <li>
+          <li class="byStatus">
             <ion-icon name="filter-outline"></ion-icon>
+            <span>Filter by status</span>
           </li>
-          <li class="withIcon">
+          <li class="Saved">
             <ion-icon name="bookmark-outline"></ion-icon>
+            <span>Saved</span>
           </li>
-          <li class="withIcon">
+          <li class="logOut">
             <ion-icon name="log-out-outline"></ion-icon>
+            <span>Logout</span>
           </li>
         </ul>
       </nav>
     </div>
+
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
