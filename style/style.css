@@ -499,3 +499,11 @@
       font-size: 2rem;
   }
 }
+
+/* Password error */
+
+#passwordError{
+  display: none;
+  color: #DB4437;
+  font-size: .8rem;
+}
