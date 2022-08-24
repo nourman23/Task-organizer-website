@@ -10,28 +10,29 @@ setTimeout(() => {
 	container.classList.add('sign-in')
 }, 200)
 
-
+// sign in event handler
 let signInBtn = document.getElementById("signInBtn");
 let signInUserName = document.getElementById("signInUserName");
 let signInPassword = document.getElementById("signInPassword");
 let passwordError = document.getElementById("passwordError");
 
 
-let userArrayFromLocalStorage = getUserFromLocalStorage()
 
 signInBtn.onclick = event => {
 	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
 		const element = userArrayFromLocalStorage[index];
-		 if (element.email == signInUserName.value && element.password == signInPassword.value) {
+		if (element.email == signInUserName.value && element.password == signInPassword.value) {
 			location.href = "tasks.html"
 			break;
-		 }else{
-			passwordError.style.display="block"
-		 }
+		} else {
+			passwordError.style.display = "block"
+		}
 
 	}
 }
 
+// localStorage function
+let userArrayFromLocalStorage = getUserFromLocalStorage()
 
 function getUserFromLocalStorage() {
 	return JSON.parse(localStorage.getItem("user"));
@@ -51,6 +52,7 @@ let userArray = [user, user1, user2];
 setUserToLocalStorage(userArray)
 
 
+// modal forgot password
 
 let InputEmail = document.getElementById("InputEmail");
 let checkEmail = document.getElementById("checkEmail");
@@ -79,3 +81,80 @@ checkEmail.onclick = e => {
 	}
 }
 
+// sign up handler 
+
+let signupBtn = document.getElementById("signupBtn");
+let signupUserName = document.getElementById("signupUserName");
+let signupEmail = document.getElementById("signupEmail");
+let signupPassword = document.getElementById("signupPassword");
+let signupPasswordConfirm = document.getElementById("signupPasswordConfirm");
+
+let userInvalidMassage = document.getElementById("userInvalidMassage")
+let emailInvalidMassage = document.getElementById("emailInvalidMassage")
+let passwordInvalidMassage = document.getElementById("passwordInvalidMassage")
+let passwordMatchInvalidMassage = document.getElementById("passwordMatchInvalidMassage")
+
+
+signupBtn.onclick = event => {
+	const emailValid = Validation.EmailValidation(signupEmail.value)
+	const usernameValid = Validation.NameValidation(signupUserName.value)
+	const passwordValid = Validation.NameValidation(signupPassword.value)
+	const passwordConfirmValid = Validation.NameValidation(signupPasswordConfirm.value)
+	const matchPassword = Validation.MatchPassword(signupPassword.value, signupPasswordConfirm.value)
+
+	if (!emailValid) {
+		emailInvalidMassage.style.display = "block"
+	} else {
+		emailInvalidMassage.style.display = "none"
+	}
+
+	if (!usernameValid) {
+		userInvalidMassage.style.display = "block"
+	} else {
+		userInvalidMassage.style.display = "none"
+	}
+
+	if (!passwordValid) {
+		passwordInvalidMassage.style.display = "block"
+	} else {
+		passwordInvalidMassage.style.display = "none"
+	}
+	if (!passwordConfirmValid || !matchPassword) {
+		passwordMatchInvalidMassage.style.display = "block"
+	} else {
+		passwordMatchInvalidMassage.style.display = "none"
+	}
+
+}
+
+class Validation {
+	static EmailValidation(email) {
+		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+			return (true)
+		}
+		return (false)
+	}
+
+	//[a-zA-Z]
+
+	static NameValidation(name) {
+		if (/^[a-zA-Z\s]*$/.test(name) && name.split(" ").length == 2) {
+
+			return (true)
+		}
+		return (false)
+	}
+	//"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+	static PasswordValidation(password) {
+		if (/"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
+
+			return (true)
+		}
+		return (false)
+	}
+
+
+	static MatchPassword(password, confirmPassword) {
+		return password == confirmPassword;
+	}
+}
