@@ -177,8 +177,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+.indexBody {
   height: 100vh;
   overflow: hidden;
 }
