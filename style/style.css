@@ -136,7 +136,7 @@
 }
 
 /* Task form */
-.input-group-append {
+.index-append {
   cursor: pointer;
 }
 .taskform .card {
@@ -177,8 +177,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+.indexBody {
   height: 100vh;
   overflow: hidden;
 }
@@ -222,13 +221,13 @@ body {
   transition-delay: 1s;
 }
 
-.input-group {
+.index {
   position: relative;
   width: 100%;
   margin: 1rem 0;
 }
 
-.input-group i {
+.index i {
   position: absolute;
   top: 50%;
   left: 1rem;
@@ -237,7 +236,7 @@ body {
   color: var(--gray-2);
 }
 
-.input-group input {
+.index input {
   width: 100%;
   padding: 1rem 3rem;
   font-size: 1rem;
@@ -247,7 +246,7 @@ body {
   outline: none;
 }
 
-.input-group input:focus {
+.index input:focus {
   border: 0.125rem solid var(--primary-color);
 }
 
