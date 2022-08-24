@@ -32,11 +32,16 @@ class User {
     }
 }
 
-const signInBtn = document.getElementById("signIn");
-const signUpBtn = document.getElementById("signUp");
-const fistForm = document.getElementById("form1");
-const secondForm = document.getElementById("form2");
-const container = document.querySelector(".container");
+let container = document.getElementById('container')
+
+toggle = () => {
+	container.classList.toggle('sign-in')
+	container.classList.toggle('sign-up')
+}
+
+setTimeout(() => {
+	container.classList.add('sign-in')
+}, 200)
 
 signInBtn.addEventListener("click", () => {
 	container.classList.remove("right-panel-active");
