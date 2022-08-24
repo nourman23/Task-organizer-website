@@ -20,14 +20,14 @@
       <!-- Sidebar -->
       <nav id="sidebar1">
         <div class="sidebar-header">
-          <h3 class="text-center">Welcome</h3>
+          <h3 class="text-center" id="welcomeName">Welcome</h3>
         </div>
 
         <ul class="list-unstyled components">
           <!-- newTask,byPriority,byStatus,Saved,logOut classes to use it in js query selector -->
           <li class="withIcon newTask">
             <ion-icon name="add-circle-outline"></ion-icon>
-            <a href="#">New task</a>
+            <a href="#" id="newTask">New task</a>
           </li>
           <li class="active">
             <ion-icon name="filter-outline"></ion-icon
@@ -40,13 +40,13 @@
             >
             <ul class="collapse list-unstyled byPriority" id="homeSubmenu">
               <li>
-                <a href="#">Critical</a>
+                <a href="#" id="priorityCritical">Critical</a>
               </li>
               <li>
-                <a href="#">Normal</a>
+                <a href="#" id="priorityNormal">Normal</a>
               </li>
               <li>
-                <a href="#"> Low priority</a>
+                <a href="#" id="priorityLow"> Low priority</a>
               </li>
             </ul>
           </li>
@@ -62,20 +62,20 @@
             >
             <ul class="collapse list-unstyled byStatus" id="pageSubmenu">
               <li>
-                <a href="#">complete</a>
+                <a href="#" id="completeState">Complete</a>
               </li>
               <li>
-                <a href="#">Incomplete</a>
+                <a href="#" id="incompleteState">Incomplete</a>
               </li>
             </ul>
           </li>
           <li class="withIcon Saved">
             <ion-icon name="bookmark-outline"></ion-icon>
-            <a href="#">Saved</a>
+            <a href="#" id="saveToLocal">Saved</a>
           </li>
           <li class="withIcon logOut">
             <ion-icon name="log-out-outline"></ion-icon>
-            <a href="#">Logout</a>
+            <a href="#" id="logout">Logout</a>
           </li>
         </ul>
       </nav>
@@ -113,7 +113,7 @@
         <div class="card">
           <!-- Title input -->
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default"
+            <span class="input-group-text" aria-describedby="inputGroup-sizing-default"
               >Title</span
             >
             <input

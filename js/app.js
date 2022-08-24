@@ -56,3 +56,13 @@ $(function(){
 
 
   ////////////////////////////////////
+
+  const welcomeName = document.getElementById("welcomeName");
+  const newTask = document.getElementById("newTask");
+  const priorityCritical = document.getElementById("priorityCritical");
+  const priorityNormal = document.getElementById("priorityNormal");
+  const priorityLow = document.getElementById("priorityLow");
+  const completeState = document.getElementById("completeState");
+  const incompleteState = document.getElementById("incompleteState");
+  const saveToLocal = document.getElementById("saveToLocal");
+  const logout = document.getElementById("logout");
