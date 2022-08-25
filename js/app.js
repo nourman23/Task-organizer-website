@@ -6,15 +6,20 @@ let allcards = document.getElementById('cards')
 let row = document.createElement("div");
 row.className = "row";
 allcards.append(row);
+let id = 0;
 function createCard(task) {
-
+    id++;
     let col = document.createElement("div");
     col.className = "col-sm-4";
+    col.setAttribute("id" , id)
     row.append(col);
 
+
+  //I have added id to the card to use it with delete it 
     let card = document.createElement("div");
-    card.className = "card text-center m-3";
-    col.append(card);
+  card.className = "card text-center m-3";
+  
+  col.append(card);
 
     let cardHeader = document.createElement("div");
     cardHeader.className = "card-header d-flex justify-content-between";
@@ -32,8 +37,12 @@ function createCard(task) {
     icon.className = "fa-solid fa-pen-to-square";
     aswomContaner.append(icon);
 
+    //I have added id to the iconXmark to use it with delete it 
     let iconXmark = document.createElement("i");
+    iconXmark.setAttribute("id" , "delCardIcon");
     iconXmark.className = "fa-solid fa-circle-xmark";
+    iconXmark.setAttribute('onclick','deleteCard(id)')
+
     aswomContaner.append(iconXmark);
 
     let cardBody = document.createElement("div");
@@ -157,3 +166,15 @@ let welcomeModelTask = document.getElementById("welcomeModelTask");
 window.onload = event => {
     welcomeModelTask.click();
 }
+
+
+
+// Delete card
+let delCardIcon =document.getElementById('delCardIcon');
+// delCardIcon.addEventListener("click",deleteCard(id));
+
+
+function deleteCard(id){
+    let delCard = document.getElementById(id)
+    delCard.parentElement.parentElement.parentElement.parentElement.remove(delCard);
+   }
