@@ -58,34 +58,6 @@ if (userArrayFromLocalStorage) {
 setUserToLocalStorage(userArray)
 
 
-// modal forgot password
-
-let InputEmail = document.getElementById("InputEmail");
-let checkEmail = document.getElementById("checkEmail");
-let displayPassword = document.getElementById("displayPassword");
-let goBackBtn = document.getElementById("goBackBtn");
-
-checkEmail.onclick = e => {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
-		if (element.email === InputEmail.value) {
-			displayPassword.textContent = `your password is ${element.password}`;
-			goBackBtn.removeAttribute("data-bs-target")
-			goBackBtn.removeAttribute("data-bs-toggle")
-			goBackBtn.setAttribute("data-bs-dismiss", "modal")
-			goBackBtn.textContent = "Done"
-			//=""
-			break;
-		} else {
-			goBackBtn.removeAttribute("data-bs-dismiss");
-			goBackBtn.setAttribute("data-bs-target", "#exampleModalToggle")
-			goBackBtn.setAttribute("data-bs-toggle", "modal")
-			goBackBtn.textContent = "Try Again"
-			displayPassword.textContent = `user not found`;
-
-		}
-	}
-}
 
 // sign up handler 
 
@@ -99,6 +71,7 @@ let userInvalidMassage = document.getElementById("userInvalidMassage")
 let emailInvalidMassage = document.getElementById("emailInvalidMassage")
 let passwordInvalidMassage = document.getElementById("passwordInvalidMassage")
 let passwordMatchInvalidMassage = document.getElementById("passwordMatchInvalidMassage")
+let emailExistMassage = document.getElementById("emailExistMassage")
 
 
 signupBtn.onclick = event => {
@@ -107,6 +80,8 @@ signupBtn.onclick = event => {
 	// const passwordValid = Validation.NameValidation(signupPassword.value)
 	// const passwordConfirmValid = Validation.NameValidation(signupPasswordConfirm.value)
 	const matchPassword = Validation.MatchPassword(signupPassword.value, signupPasswordConfirm.value)
+
+	const checkUserIfExistByEmail =Validation.checkUserIfExistByEmail(signupEmail.value)
 
 	if (!emailValid) {
 		emailInvalidMassage.style.display = "block"
@@ -118,6 +93,13 @@ signupBtn.onclick = event => {
 		userInvalidMassage.style.display = "block"
 	} else {
 		userInvalidMassage.style.display = "none"
+	}
+
+	if (checkUserIfExistByEmail) {
+		emailExistMassage.style.display = "block"
+		
+	}else{
+		emailExistMassage.style.display = "none"
 	}
 
 	// if (!passwordValid) {
@@ -132,7 +114,7 @@ signupBtn.onclick = event => {
 		passwordMatchInvalidMassage.style.display = "none"
 	}
 
-	if (emailValid && usernameValid && matchPassword) {
+	if (emailValid && usernameValid && matchPassword && !checkUserIfExistByEmail) {
 		createNewUser(signupEmail.value, signupUserName.value, signupPassword.value);
 	}
 
@@ -178,17 +160,32 @@ class Validation {
 		return password == confirmPassword;
 		// return true
 	}
+
+	static checkUserIfExistByEmail(email) {
+		for (let index = 0; index < userArray.length; index++) {
+			const element = userArray[index];
+
+			if (element.email == email) {
+				return true;
+			}
+			return false;
+
+		}
+
+	}
 }
 
 
 //show pass task 
 
-function showPass(icon ,pass){
+function showPass(icon, pass) {
 	if (pass.type === "password") {
 		pass.type = "text";
-	icon.name="eye-off-outline"
+		icon.name = "eye-off-outline"
 	} else {
 		pass.type = "password";
-	icon.name="eye-outline"
+		icon.name = "eye-outline"
 	}
 }
+
+
