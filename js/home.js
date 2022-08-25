@@ -179,3 +179,16 @@ class Validation {
 		// return true
 	}
 }
+
+
+//show pass task 
+
+function showPass(icon ,pass){
+	if (pass.type === "password") {
+		pass.type = "text";
+	icon.name="eye-off-outline"
+	} else {
+		pass.type = "password";
+	icon.name="eye-outline"
+	}
+}
