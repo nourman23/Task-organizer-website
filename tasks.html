@@ -41,11 +41,7 @@
         </div>
 
         <ul class="list-unstyled components">
-          <!-- newTask,byPriority,byStatus,Saved,logOut classes to use it in js query selector -->
-          <li class="withIcon newTask">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            <a href="#" id="newTask">New task</a>
-          </li>
+          <!-- byPriority,byStatus,without filter , Saved,logOut classes to use it in js query selector -->
           <li class="active">
             <ion-icon name="filter-outline"></ion-icon
             ><a
@@ -86,22 +82,28 @@
               </li>
             </ul>
           </li>
+          <li class="withIcon redo">
+            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+            <a href="#" id="redo">Without filters</a>
+          </li>
           <li class="withIcon Saved">
             <ion-icon name="bookmark-outline"></ion-icon>
             <a href="#" id="saveToLocal">Saved</a>
           </li>
-          <li class="withIcon logOut " >
+          <li class="withIcon logOut">
             <ion-icon name="log-out-outline"></ion-icon>
-            <a id="logout" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Logout</a>
+            <a
+              id="logout"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              >Logout</a
+            >
           </li>
         </ul>
       </nav>
       <nav id="sidebar2">
         <ul class="list-unstyled side2components">
-          <li class="newTask">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            <span>New task</span>
-          </li>
           <li class="byPriority">
             <ion-icon name="filter-outline"></ion-icon>
             <span>Filter by priority</span>
@@ -111,11 +113,20 @@
             <ion-icon name="filter-outline"></ion-icon>
             <span>Filter by status</span>
           </li>
+          <li class="redo">
+            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+            <span>Without filters</span>
+          </li>
           <li class="Saved">
             <ion-icon name="bookmark-outline"></ion-icon>
             <span>Saved</span>
           </li>
-          <li class="logOut" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <li
+            class="logOut"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
             <ion-icon name="log-out-outline"></ion-icon>
             <span>Logout</span>
           </li>
@@ -250,9 +261,11 @@
             >
               Cancel
             </button>
-            <button type="button" class="btn btn-primary" id="logoutModal">Logout !</button>
+            <button type="button" class="btn btn-primary" id="logoutModal">
+              Logout !
+            </button>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
 
