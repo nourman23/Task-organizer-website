@@ -2,11 +2,11 @@
 
 ////////////////////////////////////
 // Create Card after save
-
+let allcards = document.getElementById('cards')
 function createCard() {
   let row = document.createElement("div");
   row.className = "row";
-  document.body.append(row);
+  allcards.append(row);
 
   let col = document.createElement("div");
   col.className = "col-sm-4";

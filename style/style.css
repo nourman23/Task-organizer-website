@@ -29,8 +29,7 @@
 }
 #sidebar1 {
   width: 250px;
-  margin-left: 20px;
-
+  margin-left: 10px;
   height: 80vh;
   z-index: 999;
   background: #7386d5;
@@ -70,9 +69,10 @@
 }
 #sidebar2 li:hover span {
   display: initial;
+  z-index: 100;
 }
 .side2components {
-  height: 60vh;
+  height: 69vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -81,8 +81,8 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  justify-content: space-around;
-  height: 60vh;
+  justify-content: space-between;
+  height: 69vh;
   width: 181px;
   margin: 0 auto;
 }
@@ -132,6 +132,13 @@
   #sidebar2 {
     width: 50px;
     font-size: 15px;
+  }
+}
+
+@media (max-height: 0px) {
+  .components,
+  .side2components {
+    justify-content: center;
   }
 }
 
@@ -192,12 +199,16 @@
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
+  width: 100%;
 }
 
 .col {
   width: 50%;
 }
 
+.cards .card {
+  width: 18rem;
+}
 .align-items-center {
   display: flex;
   align-items: center;
@@ -426,7 +437,7 @@
 
 /* RESPONSIVE */
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 600px) {
   .container::before,
   .container.sign-in::before,
   .container.sign-up::before {
@@ -466,11 +477,6 @@
     border-top-right-radius: 2rem;
     transform: translateY(100%);
     transition: 1s ease-in-out;
-  }
-
-  .row {
-    align-items: flex-end;
-    justify-content: flex-end;
   }
 
   .form,
@@ -530,4 +536,9 @@
 .index ion-icon {
   right: 1rem;
   cursor: pointer;
+}
+
+/* edit the cards view and their responsiveity */
+.cards {
+  width: 90%;
 }
