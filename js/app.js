@@ -1,8 +1,5 @@
 
 // side_tasks-form
-$(function () {
-    $('#datepicker').datepicker();
-});
 
 
 ////////////////////////////////////
