@@ -99,6 +99,7 @@ let userInvalidMassage = document.getElementById("userInvalidMassage")
 let emailInvalidMassage = document.getElementById("emailInvalidMassage")
 let passwordInvalidMassage = document.getElementById("passwordInvalidMassage")
 let passwordMatchInvalidMassage = document.getElementById("passwordMatchInvalidMassage")
+let emailExistMassage = document.getElementById("emailExistMassage")
 
 
 signupBtn.onclick = event => {
@@ -107,6 +108,8 @@ signupBtn.onclick = event => {
 	// const passwordValid = Validation.NameValidation(signupPassword.value)
 	// const passwordConfirmValid = Validation.NameValidation(signupPasswordConfirm.value)
 	const matchPassword = Validation.MatchPassword(signupPassword.value, signupPasswordConfirm.value)
+
+	const checkUserIfExistByEmail =Validation.checkUserIfExistByEmail(signupEmail.value)
 
 	if (!emailValid) {
 		emailInvalidMassage.style.display = "block"
@@ -118,6 +121,13 @@ signupBtn.onclick = event => {
 		userInvalidMassage.style.display = "block"
 	} else {
 		userInvalidMassage.style.display = "none"
+	}
+
+	if (checkUserIfExistByEmail) {
+		emailExistMassage.style.display = "block"
+		
+	}else{
+		emailExistMassage.style.display = "none"
 	}
 
 	// if (!passwordValid) {
@@ -132,7 +142,7 @@ signupBtn.onclick = event => {
 		passwordMatchInvalidMassage.style.display = "none"
 	}
 
-	if (emailValid && usernameValid && matchPassword) {
+	if (emailValid && usernameValid && matchPassword && !checkUserIfExistByEmail) {
 		createNewUser(signupEmail.value, signupUserName.value, signupPassword.value);
 	}
 
@@ -178,17 +188,32 @@ class Validation {
 		return password == confirmPassword;
 		// return true
 	}
+
+	static checkUserIfExistByEmail(email) {
+		for (let index = 0; index < userArray.length; index++) {
+			const element = userArray[index];
+
+			if (element.email == email) {
+				return true;
+			}
+			return false;
+
+		}
+
+	}
 }
 
 
 //show pass task 
 
-function showPass(icon ,pass){
+function showPass(icon, pass) {
 	if (pass.type === "password") {
 		pass.type = "text";
-	icon.name="eye-off-outline"
+		icon.name = "eye-off-outline"
 	} else {
 		pass.type = "password";
-	icon.name="eye-outline"
+		icon.name = "eye-outline"
 	}
 }
+
+
