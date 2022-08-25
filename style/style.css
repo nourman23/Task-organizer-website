@@ -198,14 +198,18 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
   width: 100%;
 }
 
 .col {
   width: 50%;
 }
-
+.card-text {
+  height: 23vh;
+  width: 90%;
+  margin: 10px auto;
+  overflow: auto;
+}
 .cards .card {
   width: 18rem;
 }
@@ -541,4 +545,8 @@
 /* edit the cards view and their responsiveity */
 .cards {
   width: 90%;
+}
+
+footer {
+  background-color: black;
 }

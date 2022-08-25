@@ -32,287 +32,297 @@
     <title>Tasks</title>
   </head>
 
-  <body>
-      <!--  Made by Anzor Start NavBar -->
-
+  <body class="taskB">
+    <header>
       <nav>
         <nav class="navbar navbar-expand-md bg-light">
             <form class="container-fluid justify-content-start">
                 <div class="navbar-brand text-light ps-5"><img src="Image/programming.png" alt="Logo" width="40px"
                         height="30px"></div>
                 </div>
-
+      
                 <div style="position:absolute ; right:20px  ; top:10px;">
                     <button class="btn btn-outline-success ms-auto"><span id="navbarIcon1"><img src="Image/moon.png"
                                 alt="Color" height="20px" width="20px"></span></button>
                     <button class="btn btn-outline-success me-5"> <span id="navbarIcon2"><img src="Image/sun.png"
                                 alt="Color" height="20px" width="20px"></span></button>
-
-
+      
+      
                 </div>
             </form>
-
+      
         </nav>
-    <div class="wrapper">
-      <!-- Sidebar -->
-      <nav id="sidebar1">
-        <div class="sidebar-header">
-          <h3 class="text-center" id="welcomeName">Welcome</h3>
-        </div>
 
-        <ul class="list-unstyled components">
-          <!-- byPriority,byStatus,without filter , Saved,logOut classes to use it in js query selector -->
-          <li class="active">
-            <ion-icon name="filter-outline"></ion-icon
-            ><a
-              href="#homeSubmenu"
-              data-toggle="collapse"
-              aria-expanded="false"
-              class="dropdown-toggle"
-              >Filter by priority</a
-            >
-            <ul class="collapse list-unstyled byPriority" id="homeSubmenu">
-              <li>
-                <a href="#" id="priorityCritical">Critical</a>
-              </li>
-              <li>
-                <a href="#" id="priorityNormal">Normal</a>
-              </li>
-              <li>
-                <a href="#" id="priorityLow"> Low priority</a>
-              </li>
-            </ul>
-          </li>
+    </header>
+      <!--  Made by Anzor Start NavBar -->
+<main> 
+<div class="wrapper">
+<!-- Sidebar -->
+<nav id="sidebar1">
+  <div class="sidebar-header">
+    <h3 class="text-center" id="welcomeName">Welcome</h3>
+  </div>
 
-          <li>
-            <ion-icon name="filter-outline"></ion-icon>
-            <a
-              href="#pageSubmenu"
-              data-toggle="collapse"
-              aria-expanded="false"
-              class="dropdown-toggle"
-              >Filter by state</a
-            >
-            <ul class="collapse list-unstyled byStatus" id="pageSubmenu">
-              <li>
-                <a href="#" id="completeState">Complete</a>
-              </li>
-              <li>
-                <a href="#" id="incompleteState">Incomplete</a>
-              </li>
-            </ul>
-          </li>
-          <li class="withIcon redo">
-            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
-            <a href="#" id="redo">Without filters</a>
-          </li>
-          <li class="withIcon Saved">
-            <ion-icon name="bookmark-outline"></ion-icon>
-            <a href="#" id="saveToLocal">Saved</a>
-          </li>
-          <li class="withIcon logOut">
-            <ion-icon name="log-out-outline"></ion-icon>
-            <a
-              id="logout"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-              >Logout</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <nav id="sidebar2">
-        <ul class="list-unstyled side2components">
-          <li class="byPriority">
-            <ion-icon name="filter-outline"></ion-icon>
-            <span>Filter by priority</span>
-          </li>
+  <ul class="list-unstyled components">
+    <!-- byPriority,byStatus,without filter , Saved,logOut classes to use it in js query selector -->
+    <li class="active">
+      <ion-icon name="filter-outline"></ion-icon
+      ><a
+        href="#homeSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Filter by priority</a
+      >
+      <ul class="collapse list-unstyled byPriority" id="homeSubmenu">
+        <li>
+          <a href="#" id="priorityCritical">Critical</a>
+        </li>
+        <li>
+          <a href="#" id="priorityNormal">Normal</a>
+        </li>
+        <li>
+          <a href="#" id="priorityLow"> Low priority</a>
+        </li>
+      </ul>
+    </li>
 
-          <li class="byStatus">
-            <ion-icon name="filter-outline"></ion-icon>
-            <span>Filter by status</span>
-          </li>
-          <li class="redo">
-            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
-            <span>Without filters</span>
-          </li>
-          <li class="Saved">
-            <ion-icon name="bookmark-outline"></ion-icon>
-            <span>Saved</span>
-          </li>
-          <li
-            class="logOut"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-          >
-            <ion-icon name="log-out-outline"></ion-icon>
-            <span>Logout</span>
-          </li>
-        </ul>
-      </nav>
+    <li>
+      <ion-icon name="filter-outline"></ion-icon>
+      <a
+        href="#pageSubmenu"
+        data-toggle="collapse"
+        aria-expanded="false"
+        class="dropdown-toggle"
+        >Filter by state</a
+      >
+      <ul class="collapse list-unstyled byStatus" id="pageSubmenu">
+        <li>
+          <a href="#" id="completeState">Complete</a>
+        </li>
+        <li>
+          <a href="#" id="incompleteState">Incomplete</a>
+        </li>
+      </ul>
+    </li>
+    <li class="withIcon redo">
+      <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+      <a href="#" id="redo">Without filters</a>
+    </li>
+    <li class="withIcon Saved">
+      <ion-icon name="bookmark-outline"></ion-icon>
+      <a href="#" id="saveToLocal">Saved</a>
+    </li>
+    <li class="withIcon logOut">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <a
+        id="logout"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        >Logout</a
+      >
+    </li>
+  </ul>
+</nav>
+<nav id="sidebar2">
+  <ul class="list-unstyled side2components">
+    <li class="byPriority">
+      <ion-icon name="filter-outline"></ion-icon>
+      <span>Filter by priority</span>
+    </li>
 
-      <!-- Task form  -->
-
-      <div class="col-md-1 col-sm-1"></div>
-      <div class="taskform col-md-6 col-sm-9">
-        <h3 class="title text-center">Add new task</h3>
-        <div class="card">
-          <!-- Title input -->
-          <div class="input-group mb-3">
-            <span
-              class="input-group-text"
-              aria-describedby="inputGroup-sizing-default"
-              >Title</span
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="inputTitle"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default"
-            />
-          </div>
-          <!-- Date input -->
-          <div class="input-group input-daterange mb-3">
-            <div class="input-group-addon">Date:&nbsp;</div>
-            <input
-              id="startDate"
-              type="date"
-              class="form-control"
-              placeholder="2012-04-05"
-            />
-            <div class="input-group-addon">&nbsp; to &nbsp;</div>
-            <input
-              id="endDate"
-              type="date"
-              class="form-control"
-              placeholder="2012-04-19"
-            />
-          </div>
-          <!-- Description input -->
-          <div class="input-group mb-3">
-            <span class="input-group-text">Description</span>
-            <textarea
-              id="inputDescription"
-              class="form-control"
-              style="height: 20vh"
-              aria-label="With textarea"
-            ></textarea>
-          </div>
-
-          <!-- Priority Input -->
-          <div class="form-check">
-            <span class="col-auto">
-              <label class="col-form-label me-4 d-inline-block"
-                >Priority :</label
-              >
-            </span>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="criticalR"
-                value="critical"
-              />
-              <label class="form-check-label" for="criticalR"
-                >Critical</label
-              >
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="normalR"
-                value="normal"
-              />
-              <label class="form-check-label" for="normalR">Normal</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="lowR"
-                value="low priority"
-              />
-              <label class="form-check-label" for="lowR"
-                >Low priority</label
-              >
-            </div>
-          </div>
-          <!-- Save button -->
-          <div class="buttons">
-            <button
-              type="button"
-              class="btn btn-outline-success"
-              id="saveNewTask"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Good bye modal -->
-
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
+    <li class="byStatus">
+      <ion-icon name="filter-outline"></ion-icon>
+      <span>Filter by status</span>
+    </li>
+    <li class="redo">
+      <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+      <span>Without filters</span>
+    </li>
+    <li class="Saved">
+      <ion-icon name="bookmark-outline"></ion-icon>
+      <span>Saved</span>
+    </li>
+    <li
+      class="logOut"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">LOGOUT</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">Are you sure you want to logout ?</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <button type="button" class="btn btn-primary" id="logoutModal">
-              Logout !
-            </button>
-          </div>
-        </div>
+      <ion-icon name="log-out-outline"></ion-icon>
+      <span>Logout</span>
+    </li>
+  </ul>
+</nav>
+
+<!-- Task form  -->
+
+<div class="col-md-1 col-sm-1"></div>
+<div class="taskform col-md-6 col-sm-9">
+  <h3 class="title text-center">Add new task</h3>
+  <div class="card">
+    <!-- Title input -->
+    <div class="input-group mb-3">
+      <span
+        class="input-group-text"
+        aria-describedby="inputGroup-sizing-default"
+        >Title</span
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="inputTitle"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <!-- Date input -->
+    <div class="input-group input-daterange mb-3">
+      <div class="input-group-addon">Date:&nbsp;</div>
+      <input
+        id="startDate"
+        type="date"
+        class="form-control"
+        placeholder="2012-04-05"
+      />
+      <div class="input-group-addon">&nbsp; to &nbsp;</div>
+      <input
+        id="endDate"
+        type="date"
+        class="form-control"
+        placeholder="2012-04-19"
+      />
+    </div>
+    <!-- Description input -->
+    <div class="input-group mb-3">
+      <span class="input-group-text">Description</span>
+      <textarea
+        id="inputDescription"
+        class="form-control"
+        style="height: 20vh"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+
+    <!-- Priority Input -->
+    <div class="form-check">
+      <span class="col-auto">
+        <label class="col-form-label me-4 d-inline-block"
+          >Priority :</label
+        >
+      </span>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="inlineRadioOptions"
+          id="criticalR"
+          value="critical"
+        />
+        <label class="form-check-label" for="criticalR"
+          >Critical</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="inlineRadioOptions"
+          id="normalR"
+          value="normal"
+        />
+        <label class="form-check-label" for="normalR">Normal</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="inlineRadioOptions"
+          id="lowR"
+          value="low priority"
+        />
+        <label class="form-check-label" for="lowR"
+          >Low priority</label
+        >
       </div>
     </div>
-    <div id="cards" class="h-100"></div>
-    <footer>
+    <!-- Save button -->
+    <div class="buttons">
+      <button
+        type="button"
+        class="btn btn-outline-success"
+        id="saveNewTask"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Good bye modal -->
+
+<div
+class="modal fade"
+id="staticBackdrop"
+data-bs-backdrop="static"
+data-bs-keyboard="false"
+tabindex="-1"
+aria-labelledby="staticBackdropLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">LOGOUT</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">Are you sure you want to logout ?</div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal"
+      >
+        Cancel
+      </button>
+      <button type="button" class="btn btn-primary" id="logoutModal">
+        Logout !
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<div id="cards" ></div>
+</main>
+      <footer>
       <!--  Made by Anzor Start Footer -->
 
-      <nav class="navbar navbar-expand-md bg-dark">
-        <form class="container-fluid justify-content-start">
-          <div class="btn text-light text-center text-md-start me-3">Email</div>
-          <div class="btn text-light text-center text-md-start me-3">
-            Privacy Policy Link
-          </div>
-          <div class="btn text-light text-center text-md-start me-3">
-            contact Us
-          </div>
-          <div class="btn text-light text-center text-md-start">About Us</div>
-          <div class="ms-auto me-5 text-light">&copy;CopyRight</div>
-        </form>
-      </nav>
+      <footer>
+        <!--  Made by Anzor Start Footer -->
+  
+        <nav class="navbar navbar-expand-md bg-dark mt-3">
+          <form class="container-fluid justify-content-start">
+            <div class="btn text-light text-center text-md-start me-3">Email</div>
+            <div class="btn text-light text-center text-md-start me-3">
+              Privacy Policy Link
+            </div>
+            <div class="btn text-light text-center text-md-start me-3">
+              contact Us
+            </div>
+            <div class="btn text-light text-center text-md-start">About Us</div>
+            <div class="ms-auto me-5 text-light">&copy;CopyRight</div>
+          </form>
+        </nav>
+  
+        <!--  Made by Anzor End Footer-->
+      </footer>
 
       <!--  Made by Anzor End Footer-->
     </footer>
