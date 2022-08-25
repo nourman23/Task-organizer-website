@@ -1,180 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=\, initial-scale=1.0" />
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ----------------------------------------------------------------------------------------- -->
+    <link
+      href="https://getbootstrap.com/docs/5.2/assets/css/docs.css"
+      rel="stylesheet"
+    />
 
+    <!-- ----------------------------------------------------------------------------------------- -->
 
-  <!-- ----------------------------------------------------------------------------------------- -->
-  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css" />
 
+    <title>Tasks</title>
+  </head>
 
-  <!-- ----------------------------------------------------------------------------------------- -->
-
-  <link rel="stylesheet" href="./style/style.css" />
-
-  <title>Tasks</title>
-</head>
-
-<body>
-  <div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar1">
-      <div class="sidebar-header">
-        <h3 class="text-center" id="welcomeName">Welcome</h3>
-      </div>
-
-      <ul class="list-unstyled components">
-        <!-- newTask,byPriority,byStatus,Saved,logOut classes to use it in js query selector -->
-        <li class="withIcon newTask">
-          <ion-icon name="add-circle-outline"></ion-icon>
-          <a href="#" id="newTask">New task</a>
-        </li>
-        <li class="active">
-          <ion-icon name="filter-outline"></ion-icon><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-            class="dropdown-toggle">Filter by priority</a>
-          <ul class="collapse list-unstyled byPriority" id="homeSubmenu">
-            <li>
-              <a href="#" id="priorityCritical">Critical</a>
-            </li>
-            <li>
-              <a href="#" id="priorityNormal">Normal</a>
-            </li>
-            <li>
-              <a href="#" id="priorityLow"> Low priority</a>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <ion-icon name="filter-outline"></ion-icon>
-          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Filter by
-            state</a>
-          <ul class="collapse list-unstyled byStatus" id="pageSubmenu">
-            <li>
-              <a href="#" id="completeState">Complete</a>
-            </li>
-            <li>
-              <a href="#" id="incompleteState">Incomplete</a>
-            </li>
-          </ul>
-        </li>
-        <li class="withIcon Saved">
-          <ion-icon name="bookmark-outline"></ion-icon>
-          <a href="#" id="saveToLocal">Saved</a>
-        </li>
-        <li class="withIcon logOut">
-          <ion-icon name="log-out-outline"></ion-icon>
-          <a href="#" id="logout">Logout</a>
-        </li>
-      </ul>
-    </nav>
-    <nav id="sidebar2">
-      <ul class="list-unstyled side2components">
-        <li class="newTask">
-          <ion-icon name="add-circle-outline"></ion-icon>
-          <span>New task</span>
-        </li>
-        <li class="byPriority">
-          <ion-icon name="filter-outline"></ion-icon>
-          <span>Filter by priority</span>
-        </li>
-
-        <li class="byStatus">
-          <ion-icon name="filter-outline"></ion-icon>
-          <span>Filter by status</span>
-        </li>
-        <li class="Saved">
-          <ion-icon name="bookmark-outline"></ion-icon>
-          <span>Saved</span>
-        </li>
-        <li class="logOut">
-          <ion-icon name="log-out-outline"></ion-icon>
-          <span>Logout</span>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Task form  -->
-
-    <div class="col-md-1 col-sm-1"></div>
-    <div class="taskform col-md-6 col-sm-9">
-      <h3 class="title text-center">Add new task</h3>
-      <div class="card">
-        <!-- Title input -->
-        <div class="input-group mb-3">
-          <span class="input-group-text" aria-describedby="inputGroup-sizing-default">Title</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default" />
-        </div>
-        <!-- Date input -->
-        <div class="input-group input-daterange mb-3">
-          <div class="input-group-addon">Date:&nbsp;</div>
-          <input type="date" class="form-control" placeholder="2012-04-05" />
-          <div class="input-group-addon">&nbsp; to &nbsp;</div>
-          <input type="date" class="form-control" placeholder="2012-04-19" />
-        </div>
-        <!-- Description input -->
-        <div class="input-group mb-3">
-          <span class="input-group-text">Description</span>
-          <textarea class="form-control" style="height: 20vh" aria-label="With textarea"></textarea>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar1">
+        <div class="sidebar-header">
+          <h3 class="text-center" id="welcomeName">Welcome</h3>
         </div>
 
-        <!-- Priority Input -->
-        <div>
-          <span class="col-auto">
-            <label class="col-form-label me-4 d-inline-block">Priority :</label>
-          </span>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-            <label class="form-check-label" for="inlineRadio1">Critical</label>
+        <ul class="list-unstyled components">
+          <!-- newTask,byPriority,byStatus,Saved,logOut classes to use it in js query selector -->
+          <li class="withIcon newTask">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <a href="#" id="newTask">New task</a>
+          </li>
+          <li class="active">
+            <ion-icon name="filter-outline"></ion-icon
+            ><a
+              href="#homeSubmenu"
+              data-toggle="collapse"
+              aria-expanded="false"
+              class="dropdown-toggle"
+              >Filter by priority</a
+            >
+            <ul class="collapse list-unstyled byPriority" id="homeSubmenu">
+              <li>
+                <a href="#" id="priorityCritical">Critical</a>
+              </li>
+              <li>
+                <a href="#" id="priorityNormal">Normal</a>
+              </li>
+              <li>
+                <a href="#" id="priorityLow"> Low priority</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <ion-icon name="filter-outline"></ion-icon>
+            <a
+              href="#pageSubmenu"
+              data-toggle="collapse"
+              aria-expanded="false"
+              class="dropdown-toggle"
+              >Filter by state</a
+            >
+            <ul class="collapse list-unstyled byStatus" id="pageSubmenu">
+              <li>
+                <a href="#" id="completeState">Complete</a>
+              </li>
+              <li>
+                <a href="#" id="incompleteState">Incomplete</a>
+              </li>
+            </ul>
+          </li>
+          <li class="withIcon Saved">
+            <ion-icon name="bookmark-outline"></ion-icon>
+            <a href="#" id="saveToLocal">Saved</a>
+          </li>
+          <li class="withIcon logOut">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <a href="#" id="logout">Logout</a>
+          </li>
+        </ul>
+      </nav>
+      <nav id="sidebar2">
+        <ul class="list-unstyled side2components">
+          <li class="newTask">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <span>New task</span>
+          </li>
+          <li class="byPriority">
+            <ion-icon name="filter-outline"></ion-icon>
+            <span>Filter by priority</span>
+          </li>
+
+          <li class="byStatus">
+            <ion-icon name="filter-outline"></ion-icon>
+            <span>Filter by status</span>
+          </li>
+          <li class="Saved">
+            <ion-icon name="bookmark-outline"></ion-icon>
+            <span>Saved</span>
+          </li>
+          <li class="logOut">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Logout</span>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Task form  -->
+
+      <div class="col-md-1 col-sm-1"></div>
+      <div class="taskform col-md-6 col-sm-9">
+        <h3 class="title text-center">Add new task</h3>
+        <div class="card">
+          <!-- Title input -->
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text"
+              aria-describedby="inputGroup-sizing-default"
+              >Title</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-            <label class="form-check-label" for="inlineRadio2">Normal</label>
+          <!-- Date input -->
+          <div class="input-group input-daterange mb-3">
+            <div class="input-group-addon">Date:&nbsp;</div>
+            <input type="date" class="form-control" placeholder="2012-04-05" />
+            <div class="input-group-addon">&nbsp; to &nbsp;</div>
+            <input type="date" class="form-control" placeholder="2012-04-19" />
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" />
-            <label class="form-check-label" for="inlineRadio3">Low priority</label>
+          <!-- Description input -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">Description</span>
+            <textarea
+              class="form-control"
+              style="height: 20vh"
+              aria-label="With textarea"
+            ></textarea>
           </div>
-        </div>
-        <!-- Save button -->
-        <div class="buttons">
-          <button type="button" class="btn btn-outline-success">Save</button>
+
+          <!-- Priority Input -->
+          <div>
+            <span class="col-auto">
+              <label class="col-form-label me-4 d-inline-block"
+                >Priority :</label
+              >
+            </span>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label class="form-check-label" for="inlineRadio1"
+                >Critical</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="option2"
+              />
+              <label class="form-check-label" for="inlineRadio2">Normal</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio3"
+                value="option3"
+              />
+              <label class="form-check-label" for="inlineRadio3"
+                >Low priority</label
+              >
+            </div>
+          </div>
+          <!-- Save button -->
+          <div class="buttons">
+            <button type="button" class="btn btn-outline-success">Save</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js%22%3E"></script>
-
-
-  <!-- Ion icon script -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="./js/shared.js"></script>
-  <script src="./js/app.js"></script>
-</body>
-
+    <!-- Ion icon script -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./js/shared.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
 </html>
