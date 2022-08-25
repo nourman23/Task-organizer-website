@@ -58,34 +58,6 @@ if (userArrayFromLocalStorage) {
 setUserToLocalStorage(userArray)
 
 
-// modal forgot password
-
-let InputEmail = document.getElementById("InputEmail");
-let checkEmail = document.getElementById("checkEmail");
-let displayPassword = document.getElementById("displayPassword");
-let goBackBtn = document.getElementById("goBackBtn");
-
-checkEmail.onclick = e => {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
-		if (element.email === InputEmail.value) {
-			displayPassword.textContent = `your password is ${element.password}`;
-			goBackBtn.removeAttribute("data-bs-target")
-			goBackBtn.removeAttribute("data-bs-toggle")
-			goBackBtn.setAttribute("data-bs-dismiss", "modal")
-			goBackBtn.textContent = "Done"
-			//=""
-			break;
-		} else {
-			goBackBtn.removeAttribute("data-bs-dismiss");
-			goBackBtn.setAttribute("data-bs-target", "#exampleModalToggle")
-			goBackBtn.setAttribute("data-bs-toggle", "modal")
-			goBackBtn.textContent = "Try Again"
-			displayPassword.textContent = `user not found`;
-
-		}
-	}
-}
 
 // sign up handler 
 
