@@ -3,11 +3,10 @@
 ////////////////////////////////////
 // Create Card after save
 let allcards = document.getElementById('cards')
-
+let row = document.createElement("div");
+row.className = "row";
+allcards.append(row);
 function createCard(task) {
-  let row = document.createElement("div");
-  row.className = "row";
-  allcards.append(row);
 
   let col = document.createElement("div");
   col.className = "col-sm-4";
@@ -150,4 +149,5 @@ saveButton.onclick = (event) => {
     }
   }
   console.log(user);
+  
 };
