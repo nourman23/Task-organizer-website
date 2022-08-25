@@ -3,7 +3,13 @@
 ////////////////////////////////////
 // Create Card after save
 let allcards = document.getElementById('cards')
-function createCard() {
+ saveform
+
+function createCard(task) {
+
+
+
+
   let row = document.createElement("div");
   row.className = "row";
   allcards.append(row);
@@ -21,7 +27,7 @@ function createCard() {
   card.append(cardHeader);
 
   let spanTaskTitle = document.createElement("span");
-  spanTaskTitle.textContent = "task title";
+  spanTaskTitle.textContent = task.title;
   cardHeader.append(spanTaskTitle);
 
   let aswomContaner = document.createElement("span");
@@ -40,15 +46,9 @@ function createCard() {
   cardBody.className = "card-body";
   card.append(cardBody);
 
-  let cardTitle = document.createElement("h6");
-  cardTitle.className = "card-title";
-  cardTitle.textContent = "Description";
-  cardBody.append(cardTitle);
-
   let cardText = document.createElement("p");
   cardText.className = "card-text";
-  cardText.textContent =
-    "With supporting text below as a natural lead-in to additional content";
+  cardText.textContent = task.details;
   cardBody.append(cardText);
 
   let checkboxContaner = document.createElement("div");
@@ -82,7 +82,7 @@ function createCard() {
   let spanPriority = document.createElement("span");
   spanPriority.className = "input-group-text position-absolute end-0";
   spanPriority.id = "inputGroup-sizing-default";
-  spanPriority.textContent = "Priority";
+  spanPriority.textContent = task.priority;
   divPriority.append(spanPriority);
 
   let cardFooter = document.createElement("div");
@@ -91,7 +91,7 @@ function createCard() {
 
   let remainTime = document.createElement("span");
   remainTime.className = "text-muted";
-  remainTime.textContent = "remain time";
+  remainTime.textContent = task.remainTime;
   cardFooter.append(remainTime);
 
   let saveSpan = document.createElement("span");
@@ -102,12 +102,7 @@ function createCard() {
   saveSpan.append(saveIcon);
 }
 
-createCard();
-
-
 // logout function
-
-
 
 let logout = document.getElementById("logoutModal");
 logout.onclick = (event) => {
@@ -119,6 +114,45 @@ function getSaveDate() {
   return JSON.parse(localStorage.getItem("user"));
 }
 
+// Save new task button
 
+let user = [];
+// test case --------
+let newUser = new User("Anas", "mohammed", "tt@ttt.com", "12234");
+user.push(newUser);
+localStorage.setItem("user", JSON.stringify(user));
+// ---------
+let saveButton = document.getElementById("saveNewTask");
+saveButton.onclick = (event) => {
+  user = getSaveDate();
 
+  let inputTitle = document.getElementById("inputTitle").value;
+  let startDate = document.getElementById("startDate").value;
+  let endDate = document.getElementById("endDate").value;
+  let inputDescription = document.getElementById("inputDescription").value;
 
+  let criticalR = document.getElementById("criticalR");
+  let normalR = document.getElementById("normalR");
+  let lowR = document.getElementById("lowR");
+
+  let priority = "";
+  if (criticalR.checked) {
+    priority = "Critical";
+  } else if (normalR.checked) {
+    priority = "Normal";
+  } else {
+    priority = "Low priority";
+  }
+
+  // Find user who login & add task to user object
+  for (let i = 0; i < user.length; i++) {
+    const element = user[i];
+    if (element.isLogged) {
+      let task = new Task(inputTitle, endDate, inputDescription, priority);
+      console.log(task);
+      element.task = task;
+      createCard(task);
+    }
+  }
+  console.log(user);
+};
