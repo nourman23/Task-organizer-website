@@ -33,6 +33,26 @@
   </head>
 
   <body>
+      <!--  Made by Anzor Start NavBar -->
+
+      <nav>
+        <nav class="navbar navbar-expand-md bg-light">
+            <form class="container-fluid justify-content-start">
+                <div class="navbar-brand text-light ps-5"><img src="Image/programming.png" alt="Logo" width="40px"
+                        height="30px"></div>
+                </div>
+
+                <div style="position:absolute ; right:20px  ; top:10px;">
+                    <button class="btn btn-outline-success ms-auto"><span id="navbarIcon1"><img src="Image/moon.png"
+                                alt="Color" height="20px" width="20px"></span></button>
+                    <button class="btn btn-outline-success me-5"> <span id="navbarIcon2"><img src="Image/sun.png"
+                                alt="Color" height="20px" width="20px"></span></button>
+
+
+                </div>
+            </form>
+
+        </nav>
     <div class="wrapper">
       <!-- Sidebar -->
       <nav id="sidebar1">
@@ -41,11 +61,7 @@
         </div>
 
         <ul class="list-unstyled components">
-          <!-- newTask,byPriority,byStatus,Saved,logOut classes to use it in js query selector -->
-          <li class="withIcon newTask">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            <a href="#" id="newTask">New task</a>
-          </li>
+          <!-- byPriority,byStatus,without filter , Saved,logOut classes to use it in js query selector -->
           <li class="active">
             <ion-icon name="filter-outline"></ion-icon
             ><a
@@ -86,6 +102,10 @@
               </li>
             </ul>
           </li>
+          <li class="withIcon redo">
+            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+            <a href="#" id="redo">Without filters</a>
+          </li>
           <li class="withIcon Saved">
             <ion-icon name="bookmark-outline"></ion-icon>
             <a href="#" id="saveToLocal">Saved</a>
@@ -104,10 +124,6 @@
       </nav>
       <nav id="sidebar2">
         <ul class="list-unstyled side2components">
-          <li class="newTask">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            <span>New task</span>
-          </li>
           <li class="byPriority">
             <ion-icon name="filter-outline"></ion-icon>
             <span>Filter by priority</span>
@@ -116,6 +132,10 @@
           <li class="byStatus">
             <ion-icon name="filter-outline"></ion-icon>
             <span>Filter by status</span>
+          </li>
+          <li class="redo">
+            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+            <span>Without filters</span>
           </li>
           <li class="Saved">
             <ion-icon name="bookmark-outline"></ion-icon>
@@ -276,7 +296,26 @@
         </div>
       </div>
     </div>
+    <div id="cards" class="h-100"></div>
+    <footer>
+      <!--  Made by Anzor Start Footer -->
 
+      <nav class="navbar navbar-expand-md bg-dark">
+        <form class="container-fluid justify-content-start">
+          <div class="btn text-light text-center text-md-start me-3">Email</div>
+          <div class="btn text-light text-center text-md-start me-3">
+            Privacy Policy Link
+          </div>
+          <div class="btn text-light text-center text-md-start me-3">
+            contact Us
+          </div>
+          <div class="btn text-light text-center text-md-start">About Us</div>
+          <div class="ms-auto me-5 text-light">&copy;CopyRight</div>
+        </form>
+      </nav>
+
+      <!--  Made by Anzor End Footer-->
+    </footer>
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
