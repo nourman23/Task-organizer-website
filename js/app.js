@@ -243,6 +243,10 @@ for (let i = 0; i < user.length; i++) {
 // filter by priority
 
 let priorityCritical = document.getElementById("priorityCritical");
+let priorityNormal = document.getElementById("priorityNormal");
+let priorityLow = document.getElementById("priorityLow");
+
+
 
 priorityCritical.onclick = event => {
 
@@ -262,6 +266,68 @@ priorityCritical.onclick = event => {
   for (let index = 0; index < element.length; index++) {
     const task = element[index];
     if (task.priority!="Critical") {
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      console.log(card);
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+  // console.log(taskPriority);
+}
+
+priorityNormal.onclick = event => {
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.priority!="Normal") {
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      console.log(card);
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+  // console.log(taskPriority);
+}
+
+priorityLow.onclick = event => {
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.priority!="Low priority") {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
       console.log(card);
