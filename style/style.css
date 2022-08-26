@@ -50,7 +50,7 @@
 }
 #sidebar2 li span {
   position: absolute;
-  width: 150px;
+  width: 170px;
   background-color: #435dc4;
   text-align: center;
   padding: 10px;
@@ -83,7 +83,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 69vh;
-  width: 181px;
+  width: 217px;
   margin: 0 auto;
 }
 
