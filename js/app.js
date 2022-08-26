@@ -269,7 +269,7 @@ priorityCritical.onclick = event => {
     if (task.priority!="Critical") {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+      
       card.style.display="none"
     }
     
@@ -300,7 +300,7 @@ priorityNormal.onclick = event => {
     if (task.priority!="Normal") {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+      
       card.style.display="none"
     }
     
@@ -331,7 +331,7 @@ priorityLow.onclick = event => {
     if (task.priority!="Low priority") {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+      
       card.style.display="none"
     }
     
@@ -385,7 +385,7 @@ completeState.onclick = event => {
     if (task.completed== false) {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+      
       card.style.display="none"
     }
     
@@ -418,7 +418,7 @@ incompleteState.onclick = event => {
     if (task.completed== true) {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+      
       card.style.display="none"
     }
     
@@ -452,7 +452,7 @@ without.onclick = event => {
   
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+     
       card.style.display="block"
     
     
