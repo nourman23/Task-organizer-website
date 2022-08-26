@@ -117,7 +117,6 @@ signupBtn.onclick = event => {
 
 	if (emailValid && usernameValid && matchPassword && !checkUserIfExistByEmail) {
 		createNewUser(signupEmail.value, signupUserName.value, signupPassword.value);
-		// location.href = "tasks.html"
 	}
 
 }
@@ -125,8 +124,11 @@ signupBtn.onclick = event => {
 function createNewUser(signupEmail, signupUserName, signupPassword) {
 	let name = signupUserName.split(" ");
 	let newUser = new User(name[0], name[1], signupEmail, signupPassword)
+	newUser.isLogged = true
 	userArray.push(newUser)
 	setDataInLocal(userArray)
+	location.href = "tasks.html"
+
 	console.log(newUser);
 }
 
