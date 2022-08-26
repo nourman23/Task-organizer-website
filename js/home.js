@@ -39,6 +39,7 @@ signInBtn.onclick = event => {
 		const element = userArray[index];
 		if (element.email == signInUserName.value && element.password == signInPassword.value) {
 			element.isLogged = true
+			setDataInLocal(userArray);
 			location.href = "tasks.html"
 			break;
 		} else {
