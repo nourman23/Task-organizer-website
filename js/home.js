@@ -16,12 +16,29 @@ let signInUserName = document.getElementById("signInUserName");
 let signInPassword = document.getElementById("signInPassword");
 let passwordError = document.getElementById("passwordError");
 
+// localStorage function
+
+let userArray = []
+
+function getDataFromLocal() {
+	return JSON.parse(localStorage.getItem("user"))
+}
+
+function setDataInLocal(userArray) {
+	localStorage.setItem("user", JSON.stringify(userArray))
+}
+
+
+if (getDataFromLocal()) {
+	userArray = getDataFromLocal()
+}
 
 
 signInBtn.onclick = event => {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
+	for (let index = 0; index < userArray.length; index++) {
+		const element = userArray[index];
 		if (element.email == signInUserName.value && element.password == signInPassword.value) {
+			element.isLogged = true
 			location.href = "tasks.html"
 			break;
 		} else {
@@ -31,31 +48,15 @@ signInBtn.onclick = event => {
 	}
 }
 
-// localStorage function
-let userArrayFromLocalStorage = getUserFromLocalStorage()
 
-function getUserFromLocalStorage() {
-	return JSON.parse(localStorage.getItem("user"));
-}
-function setUserToLocalStorage(userArray) {
-	localStorage.setItem("user", JSON.stringify(userArray));
-}
 
 // test case mock database 
 
 // let user = new User("khalid", "alkarmi", "khalid.95@gmail.com", "123456");
 // let user1 = new User("khalid", "alkarmi", "khalid95@gmail.com", "123456");
 // let user2 = new User("khalid", "alkarmi", "khalid.95@hotmail.com", "123456");
-let userArray = [];
 
-if (userArrayFromLocalStorage) {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
-		userArray.push(element)
-	}
-}
 
-setUserToLocalStorage(userArray)
 
 
 
@@ -81,7 +82,7 @@ signupBtn.onclick = event => {
 	// const passwordConfirmValid = Validation.NameValidation(signupPasswordConfirm.value)
 	const matchPassword = Validation.MatchPassword(signupPassword.value, signupPasswordConfirm.value)
 
-	const checkUserIfExistByEmail =Validation.checkUserIfExistByEmail(signupEmail.value)
+	const checkUserIfExistByEmail = Validation.checkUserIfExistByEmail(signupEmail.value)
 
 	if (!emailValid) {
 		emailInvalidMassage.style.display = "block"
@@ -97,8 +98,8 @@ signupBtn.onclick = event => {
 
 	if (checkUserIfExistByEmail) {
 		emailExistMassage.style.display = "block"
-		
-	}else{
+
+	} else {
 		emailExistMassage.style.display = "none"
 	}
 
@@ -123,8 +124,11 @@ signupBtn.onclick = event => {
 function createNewUser(signupEmail, signupUserName, signupPassword) {
 	let name = signupUserName.split(" ");
 	let newUser = new User(name[0], name[1], signupEmail, signupPassword)
+	newUser.isLogged = true
 	userArray.push(newUser)
-	setUserToLocalStorage(userArray)
+	setDataInLocal(userArray)
+	location.href = "tasks.html"
+
 	console.log(newUser);
 }
 
