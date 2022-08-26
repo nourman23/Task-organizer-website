@@ -145,7 +145,7 @@ class Validation {
 	//[a-zA-Z]
 
 	static NameValidation(name) {
-		if (/^[a-zA-Z\s]*$/.test(name) && name.split(" ").length == 2) {
+		if (/^[a-zA-Z\s]*$/.test(name)) {
 
 			return (true)
 		}
