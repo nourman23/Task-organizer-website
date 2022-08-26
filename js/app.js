@@ -108,6 +108,14 @@ function createCard(task) {
 
 let logout = document.getElementById("logoutModal");
 logout.onclick = (event) => {
+  for (let i = 0; i < user.length; i++) {
+    const element = user[i];
+    if (element.isLogged) {
+      element.isLogged = false;
+    }
+  }
+  console.log(user);
+  localStorage.setItem("user", JSON.stringify(user));
   let saveTask = getSaveDate();
   location.href = "index.html";
 };
