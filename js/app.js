@@ -262,8 +262,9 @@ priorityCritical.onclick = event => {
   for (let index = 0; index < element.length; index++) {
     const task = element[index];
     if (task.priority!="Critical") {
-      let id = (task.idDOM+1).toString()
+      let id = (task.idDOM).toString()
       let card = document.getElementById(id)
+      console.log(card);
       card.style.display="none"
     }
     
@@ -276,10 +277,10 @@ priorityCritical.onclick = event => {
 
 
 
-    for(let i =0 ; i<user.length; i++)
-    if(user[i].isLogged){
-        user[i].tasks.forEach((e)=>createCard(e)) 
-    }
+    // for(let i =0 ; i<user.length; i++)
+    // if(user[i].isLogged){
+    //     user[i].tasks.forEach((e)=>createCard(e)) 
+    // }
 
 /* 
 let task = new Task(inputTitle, endDate, inputDescription, priority);
