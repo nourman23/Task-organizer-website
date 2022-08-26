@@ -32,9 +32,12 @@ function createCard(task) {
   aswomContaner.className = "d-inline-flex gap-2";
   cardHeader.append(aswomContaner);
 
-  let icon = document.createElement("i");
-  icon.className = "fa-solid fa-pen-to-square";
-  aswomContaner.append(icon);
+    let icon = document.createElement("i");
+    icon.className = "fa-solid fa-pen-to-square";
+    //  data-bs-toggle="modal" data-bs-target="#staticBackdrop
+    // icon.setAttribute("data-bs-toggle","modal")
+    // icon.setAttribute("data-bs-target","#staticBackdropG")
+    aswomContaner.append(icon);
 
   //I have added id to the iconXmark to use it with delete it
   let iconXmark = document.createElement("i");
@@ -87,9 +90,9 @@ function createCard(task) {
   spanPriority.textContent = task.priority;
   divPriority.append(spanPriority);
 
-  let cardFooter = document.createElement("div");
-  cardFooter.className = "card-footer  d-flex justify-content-between";
-  card.append(cardFooter);
+    let cardFooter = document.createElement("div");
+    cardFooter.className = "card-footer  d-flex justify-content-center";
+    card.append(cardFooter);
 
   let remainTime = document.createElement("span");
   remainTime.className = "text-muted";
@@ -99,9 +102,14 @@ function createCard(task) {
   let saveSpan = document.createElement("span");
   cardFooter.append(saveSpan);
 
-  let saveIcon = document.createElement("i");
-  saveIcon.className = "fa-solid fa-circle-check";
-  saveSpan.append(saveIcon);
+   
+}
+
+// save change 
+let saveChange = document.getElementById("saveChange");
+
+saveChange.onclick = event =>{
+    
 }
 
 // logout function
@@ -110,9 +118,9 @@ let logout = document.getElementById("logoutModal");
 logout.onclick = (event) => {
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
-    if (element.isLogged) {
+   
       element.isLogged = false;
-    }
+    
   }
   console.log(user);
   localStorage.setItem("user", JSON.stringify(user));
@@ -185,6 +193,8 @@ let delCardIcon = document.getElementById("delCardIcon");
 
 function deleteCard(id) {
   let delCard = document.getElementById(id);
+  console.log(id);
+
   delCard.parentElement.parentElement.parentElement.parentElement.remove(
     delCard
   );

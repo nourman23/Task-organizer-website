@@ -239,7 +239,70 @@
           </div>
         </div>
       </div>
+      <div class="modal fade" id="staticBackdropG" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+  
+            <h3 class="title text-center">Edit</h3>
+            <div class="card">
+              <!-- Title input -->
+              <div class="input-group mb-3">
+                <span class="input-group-text" aria-describedby="inputGroup-sizing-default">Title</span>
+                <input type="text" class="form-control" id="inputTitle" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" />
+              </div>
+              <!-- Date input -->
+              <div class="input-group input-daterange mb-3">
+                <div class="input-group-addon">Date:&nbsp;</div>
+                <input id="startDate" type="date" class="form-control" placeholder="2012-04-05" />
+                <div class="input-group-addon">&nbsp; to &nbsp;</div>
+                <input id="endDate" type="date" class="form-control" placeholder="2012-04-19" />
+              </div>
+              <!-- Description input -->
+              <div class="input-group mb-3">
+                <span class="input-group-text">Description</span>
+                <textarea id="inputDescription" class="form-control" style="height: 20vh"
+                  aria-label="With textarea"></textarea>
+              </div>
+  
+              <!-- Priority Input -->
+              <div class="form-check">
+                <span class="col-auto">
+                  <label class="col-form-label me-4 d-inline-block">Priority :</label>
+                </span>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="criticalR"
+                    value="critical" />
+                  <label class="form-check-label" for="criticalR">Critical</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="normalR" value="normal"
+                    default />
+                  <label class="form-check-label" for="normalR">Normal</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lowR" value="low priority" />
+                  <label class="form-check-label" for="lowR">Low priority</label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveChange">save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
+
   <footer>
     <!--  Made by Anzor Start Footer -->
 
