@@ -35,6 +35,9 @@ function createCard(task) {
 
     let icon = document.createElement("i");
     icon.className = "fa-solid fa-pen-to-square";
+    //  data-bs-toggle="modal" data-bs-target="#staticBackdrop
+    icon.setAttribute("data-bs-toggle","modal")
+    icon.setAttribute("data-bs-target","#staticBackdropG")
     aswomContaner.append(icon);
 
     //I have added id to the iconXmark to use it with delete it 
@@ -89,7 +92,7 @@ function createCard(task) {
     divPriority.append(spanPriority);
 
     let cardFooter = document.createElement("div");
-    cardFooter.className = "card-footer  d-flex justify-content-between";
+    cardFooter.className = "card-footer  d-flex justify-content-center";
     card.append(cardFooter);
 
     let remainTime = document.createElement("span");
@@ -100,9 +103,14 @@ function createCard(task) {
     let saveSpan = document.createElement("span");
     cardFooter.append(saveSpan);
 
-    let saveIcon = document.createElement("i");
-    saveIcon.className = "fa-solid fa-circle-check";
-    saveSpan.append(saveIcon);
+   
+}
+
+// save change 
+let saveChange = document.getElementById("saveChange");
+
+saveChange.onclick = event =>{
+    
 }
 
 // logout function
