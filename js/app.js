@@ -6,10 +6,9 @@ let allcards = document.getElementById("cards");
 let row = document.createElement("div");
 row.className = "row";
 allcards.append(row);
-let id = 0;
 
 //create card 
-function createCard(task) {
+function createCard(task , id) {
  
   let col = document.createElement("div");
   col.className = "col-sm-4";
@@ -45,7 +44,7 @@ function createCard(task) {
   let iconXmark = document.createElement("i");
   iconXmark.setAttribute("id", "delCardIcon");
   iconXmark.className = "fa-solid fa-circle-xmark";
-  iconXmark.setAttribute("onclick", "deleteCard("+id+")");
+  iconXmark.setAttribute("onclick", "deleteSingleCard("+id+")");
 
   aswomContaner.append(iconXmark);
 
@@ -157,6 +156,7 @@ function setDataInLocal(userArray) {
 // user.push(newUser);
 
 // ---------
+let TaskId = 0;
 let saveButton = document.getElementById("saveNewTask");
 saveButton.onclick = (event) => {
   let inputTitle = document.getElementById("inputTitle").value;
@@ -190,11 +190,14 @@ saveButton.onclick = (event) => {
     const element = user[i];
     if (element.isLogged) {
 
-      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, id);
+      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, TaskId);
+      
       console.log(task);
       element.tasks.push(task);
+      
+      createCard(task ,TaskId);
+      TaskId++;
       localStorage.setItem('user', JSON.stringify(user));
-      createCard(task);
     }
   }
 
@@ -214,15 +217,33 @@ let welcomeModelTask = document.getElementById("welcomeModelTask");
 window.onload = (event) => {
   welcomeModelTask.click();
 };
-
+//delete single card
+function deleteSingleCard(id){
+    for(let i =0 ; i<user.length; i++){
+        let element = user[i]
+        if(element.isLogged){
+          for(let j=0 ; j<element.tasks.length;j++){
+            if(element.tasks[j].idDOM==id){
+                if(element.tasks.length==1){
+                    deleteCard(element.tasks[j].idDOM)
+                    element.tasks.splice(0, 1);
+                }
+                else{
+                    deleteCard(element.tasks[j].idDOM)
+                    element.tasks.splice(j, 1);
+                }
+            }
+        }
+        localStorage.setItem('user', JSON.stringify(user));}
+    }
+}
 // Delete card
 let delCardIcon = document.getElementById("delCardIcon");
 // delCardIcon.addEventListener("click",deleteCard(id));
 
 function deleteCard(id) {
   let delCard = document.getElementById(id);
-
-  delCard.remove();
+  delCard.remove();    
 
 }
 
@@ -232,13 +253,8 @@ window.onpopstate = function () {
   window.history.go(1);
 };
 
-// view saved tasks cards 
 
-for (let i = 0; i < user.length; i++) {
-  if (user[i].isLogged) {
-    user[i].tasks.forEach((e) => createCard(e))
-  }
-}
+
 
 // filter by priority
 
@@ -275,31 +291,47 @@ priorityCritical.onclick = event => {
   // console.log(taskPriority);
 }
 
-
-
-    // for(let i =0 ; i<user.length; i++)
-    // if(user[i].isLogged){
-    //     user[i].tasks.forEach((e)=>createCard(e)) 
-    // }
+// view saved tasks cards 
+let refId=0;
+    for(let i =0 ; i<user.length; i++)
+    if(user[i].isLogged){
+        user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
+    }
 
 /* 
 let task = new Task(inputTitle, endDate, inputDescription, priority);
       console.log(task);
       element.tasks.push(task);
        */
+
 function completedTasks(id){
+    
     for(let i =0 ; i<user.length; i++){
         let element = user[i]
         if(element.isLogged){
-            if(element.tasks[id].completed==false)
-            element.tasks[id].completed=true
-            else
-            element.tasks[id].completed=false
-            localStorage.setItem('user', JSON.stringify(user));
+       
+            for(let i=0 ; i<element.tasks.length;i++){
+                if(  element.tasks[i].idDOM==id){
+                    console.log(element.tasks[i].idDOM)
+                    if(element.tasks[i].completed==false)
+                    element.tasks[i].completed=true
+                    else
+                    element.tasks[i].completed=false
+                }
+                else{
+
+                }
+                localStorage.setItem('user', JSON.stringify(user));
+            }
+            
+         
+            
+            
         }
     }
    
 }
+
 
 // clear all completed tasks
 // let clearAll = document.querySelectorAll('.clear');
@@ -307,36 +339,39 @@ function completedTasks(id){
 // clearAll[1].addEventListener('click' , clearCompletedT())
 
 
-// function clearCompletedT(){
-// let completeTask=[]
-//     for(let i =0 ; i<user.length; i++){
-//         let element = user[i]
-//         if(element.isLogged){
-//           for(let j=0 ; j<element.tasks.length;j++){
+function clearCompletedT(){
+let completeTask=[]
+    for(let i =0 ; i<user.length; i++){
+        let element = user[i]
+        if(element.isLogged){
+          for(let j=0 ; j<element.tasks.length;j++){
             
-//             if(element.tasks[j].completed==true){
-//                 // completeTask.push(element.tasks[j])
-//                 if(element.tasks.length==1){
-//                     deleteCard(0)
-//                     element.tasks.splice(0, 1);
-                   
-//                 }
-//                 // element.tasks.splice(0, 1);
-//                 else{
-//                     deleteCard(j)
-//                     element.tasks.splice(j, 1);
-//                 }
+            if(element.tasks[j].completed==true){
+                // completeTask.push(element.tasks[j])
+                if(element.tasks.length==1){
+                    completeTask.push(element.tasks[j])
+                    deleteCard(element.tasks[j].idDOM)
+                    element.tasks.splice(0, 1);
+                }
+                
+                else{
+                    deleteCard(element.tasks[j].idDOM)
+                    element.tasks.splice(j, 1);
+                }
                
             
-//             }
+            }
+            // for(let i=0 ; i<completeTask.length;i++){
+            //     deleteCard(completeTask[i].idDOM)
+            // }
          
-//         }
-//         localStorage.setItem('user', JSON.stringify(user));
+        }
+        localStorage.setItem('user', JSON.stringify(user));
        
         
-//         }
-//     }
+        }
+    }
      
-// }
+}
 
 
