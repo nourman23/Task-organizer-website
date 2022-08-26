@@ -16,12 +16,29 @@ let signInUserName = document.getElementById("signInUserName");
 let signInPassword = document.getElementById("signInPassword");
 let passwordError = document.getElementById("passwordError");
 
+// localStorage function
+
+let userArray = []
+
+function getDataFromLocal() {
+	return JSON.parse(localStorage.getItem("user"))
+}
+
+function setDataInLocal(userArray) {
+	localStorage.setItem("user", JSON.stringify(userArray))
+}
+
+
+if (getDataFromLocal()) {
+	userArray = getDataFromLocal()
+}
 
 
 signInBtn.onclick = event => {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
+	for (let index = 0; index < userArray.length; index++) {
+		const element = userArray[index];
 		if (element.email == signInUserName.value && element.password == signInPassword.value) {
+			element.isLogged = true
 			location.href = "tasks.html"
 			break;
 		} else {
@@ -31,61 +48,17 @@ signInBtn.onclick = event => {
 	}
 }
 
-// localStorage function
-let userArrayFromLocalStorage = getUserFromLocalStorage()
 
-function getUserFromLocalStorage() {
-	return JSON.parse(localStorage.getItem("user"));
-}
-function setUserToLocalStorage(userArray) {
-	localStorage.setItem("user", JSON.stringify(userArray));
-}
 
 // test case mock database 
 
 // let user = new User("khalid", "alkarmi", "khalid.95@gmail.com", "123456");
 // let user1 = new User("khalid", "alkarmi", "khalid95@gmail.com", "123456");
 // let user2 = new User("khalid", "alkarmi", "khalid.95@hotmail.com", "123456");
-let userArray = [];
-
-if (userArrayFromLocalStorage) {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
-		userArray.push(element)
-	}
-}
-
-setUserToLocalStorage(userArray)
 
 
-// modal forgot password
 
-let InputEmail = document.getElementById("InputEmail");
-let checkEmail = document.getElementById("checkEmail");
-let displayPassword = document.getElementById("displayPassword");
-let goBackBtn = document.getElementById("goBackBtn");
 
-checkEmail.onclick = e => {
-	for (let index = 0; index < userArrayFromLocalStorage.length; index++) {
-		const element = userArrayFromLocalStorage[index];
-		if (element.email === InputEmail.value) {
-			displayPassword.textContent = `your password is ${element.password}`;
-			goBackBtn.removeAttribute("data-bs-target")
-			goBackBtn.removeAttribute("data-bs-toggle")
-			goBackBtn.setAttribute("data-bs-dismiss", "modal")
-			goBackBtn.textContent = "Done"
-			//=""
-			break;
-		} else {
-			goBackBtn.removeAttribute("data-bs-dismiss");
-			goBackBtn.setAttribute("data-bs-target", "#exampleModalToggle")
-			goBackBtn.setAttribute("data-bs-toggle", "modal")
-			goBackBtn.textContent = "Try Again"
-			displayPassword.textContent = `user not found`;
-
-		}
-	}
-}
 
 // sign up handler 
 
@@ -99,6 +72,7 @@ let userInvalidMassage = document.getElementById("userInvalidMassage")
 let emailInvalidMassage = document.getElementById("emailInvalidMassage")
 let passwordInvalidMassage = document.getElementById("passwordInvalidMassage")
 let passwordMatchInvalidMassage = document.getElementById("passwordMatchInvalidMassage")
+let emailExistMassage = document.getElementById("emailExistMassage")
 
 
 signupBtn.onclick = event => {
@@ -107,6 +81,8 @@ signupBtn.onclick = event => {
 	// const passwordValid = Validation.NameValidation(signupPassword.value)
 	// const passwordConfirmValid = Validation.NameValidation(signupPasswordConfirm.value)
 	const matchPassword = Validation.MatchPassword(signupPassword.value, signupPasswordConfirm.value)
+
+	const checkUserIfExistByEmail = Validation.checkUserIfExistByEmail(signupEmail.value)
 
 	if (!emailValid) {
 		emailInvalidMassage.style.display = "block"
@@ -118,6 +94,13 @@ signupBtn.onclick = event => {
 		userInvalidMassage.style.display = "block"
 	} else {
 		userInvalidMassage.style.display = "none"
+	}
+
+	if (checkUserIfExistByEmail) {
+		emailExistMassage.style.display = "block"
+
+	} else {
+		emailExistMassage.style.display = "none"
 	}
 
 	// if (!passwordValid) {
@@ -132,7 +115,7 @@ signupBtn.onclick = event => {
 		passwordMatchInvalidMassage.style.display = "none"
 	}
 
-	if (emailValid && usernameValid && matchPassword) {
+	if (emailValid && usernameValid && matchPassword && !checkUserIfExistByEmail) {
 		createNewUser(signupEmail.value, signupUserName.value, signupPassword.value);
 	}
 
@@ -141,8 +124,11 @@ signupBtn.onclick = event => {
 function createNewUser(signupEmail, signupUserName, signupPassword) {
 	let name = signupUserName.split(" ");
 	let newUser = new User(name[0], name[1], signupEmail, signupPassword)
+	newUser.isLogged = true
 	userArray.push(newUser)
-	setUserToLocalStorage(userArray)
+	setDataInLocal(userArray)
+	location.href = "tasks.html"
+
 	console.log(newUser);
 }
 
@@ -178,17 +164,32 @@ class Validation {
 		return password == confirmPassword;
 		// return true
 	}
+
+	static checkUserIfExistByEmail(email) {
+		for (let index = 0; index < userArray.length; index++) {
+			const element = userArray[index];
+
+			if (element.email == email) {
+				return true;
+			}
+			return false;
+
+		}
+
+	}
 }
 
 
 //show pass task 
 
-function showPass(icon ,pass){
+function showPass(icon, pass) {
 	if (pass.type === "password") {
 		pass.type = "text";
-	icon.name="eye-off-outline"
+		icon.name = "eye-off-outline"
 	} else {
 		pass.type = "password";
-	icon.name="eye-outline"
+		icon.name = "eye-outline"
 	}
 }
+
+
