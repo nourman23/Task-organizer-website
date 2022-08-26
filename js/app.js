@@ -119,10 +119,12 @@ function getSaveDate() {
 
 // Save new task button
 
-let user = [];
+let user = getSaveDate();
 // test case --------
-let newUser = new User("Anas", "mohammed", "tt@ttt.com", "12234");
-user.push(newUser);
+// let newUser = new User("Anas", "mohammed", "tt@ttt.com", "12234");
+// user.push(newUser);
+
+
 localStorage.setItem("user", JSON.stringify(user));
 // ---------
 let saveButton = document.getElementById("saveNewTask");
