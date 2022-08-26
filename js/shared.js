@@ -1,12 +1,15 @@
 // Task class take 6 params this function will carry task object
 class Task {
-  constructor(title, date, startDate ,details, priority, completed = false) {
+  constructor(title, date, startDate ,details, priority,idDOM, completed = false) {
     this.title = title;
     this.date = date;
     this.details = details;
     this.priority = priority;
     this.completed = completed;
+    // card id generated
+    this.idDOM=idDOM
     this.remainTime = this.calculateRemainTime(startDate,date);
+
   }
 
   // calculateRemainTime it's a method take date time as string and return remain day

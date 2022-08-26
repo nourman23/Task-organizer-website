@@ -179,7 +179,7 @@ saveButton.onclick = (event) => {
     const element = user[i];
     if (element.isLogged) {
 
-      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority);
+      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, id);
       console.log(task);
       element.tasks.push(task);
       localStorage.setItem('user', JSON.stringify(user));
@@ -224,7 +224,42 @@ window.onpopstate = function () {
 };
 
 // view saved tasks cards 
-for (let i = 0; i < user.length; i++)
+for (let i = 0; i < user.length; i++) {
   if (user[i].isLogged) {
     user[i].tasks.forEach((e) => createCard(e))
   }
+}
+
+// filter by priority
+
+let priorityCritical = document.getElementById("priorityCritical");
+
+priorityCritical.onclick = event => {
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.priority!="Critical") {
+      let id = (task.idDOM+1).toString()
+      let card = document.getElementById(id)
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+  // console.log(taskPriority);
+}
