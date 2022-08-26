@@ -32,12 +32,12 @@ function createCard(task) {
   aswomContaner.className = "d-inline-flex gap-2";
   cardHeader.append(aswomContaner);
 
-    let icon = document.createElement("i");
-    icon.className = "fa-solid fa-pen-to-square";
-    //  data-bs-toggle="modal" data-bs-target="#staticBackdrop
-    // icon.setAttribute("data-bs-toggle","modal")
-    // icon.setAttribute("data-bs-target","#staticBackdropG")
-    aswomContaner.append(icon);
+  let icon = document.createElement("i");
+  icon.className = "fa-solid fa-pen-to-square";
+  //  data-bs-toggle="modal" data-bs-target="#staticBackdrop
+  // icon.setAttribute("data-bs-toggle","modal")
+  // icon.setAttribute("data-bs-target","#staticBackdropG")
+  aswomContaner.append(icon);
 
   //I have added id to the iconXmark to use it with delete it
   let iconXmark = document.createElement("i");
@@ -90,9 +90,9 @@ function createCard(task) {
   spanPriority.textContent = task.priority;
   divPriority.append(spanPriority);
 
-    let cardFooter = document.createElement("div");
-    cardFooter.className = "card-footer  d-flex justify-content-center";
-    card.append(cardFooter);
+  let cardFooter = document.createElement("div");
+  cardFooter.className = "card-footer  d-flex justify-content-center";
+  card.append(cardFooter);
 
   let remainTime = document.createElement("span");
   remainTime.className = "text-muted";
@@ -102,14 +102,14 @@ function createCard(task) {
   let saveSpan = document.createElement("span");
   cardFooter.append(saveSpan);
 
-   
+
 }
 
 // save change 
 let saveChange = document.getElementById("saveChange");
 
-saveChange.onclick = event =>{
-    
+saveChange.onclick = event => {
+
 }
 
 // logout function
@@ -118,9 +118,9 @@ let logout = document.getElementById("logoutModal");
 logout.onclick = (event) => {
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
-   
-      element.isLogged = false;
-    
+
+    element.isLogged = false;
+
   }
   console.log(user);
   localStorage.setItem("user", JSON.stringify(user));
@@ -165,21 +165,38 @@ saveButton.onclick = (event) => {
   } else {
     priority = "Low priority";
   }
+  if (inputTitle == "" || inputTitle === null) {
+    return
+  }
+  console.log(compareDate(startDate, endDate));
+  if (!compareDate(startDate, endDate)) {
+    return
+  }
+
 
   // Find user who login & add task to user object
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
     if (element.isLogged) {
-     
-      let task = new Task(inputTitle, endDate,startDate, inputDescription, priority);
+
+      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority);
       console.log(task);
       element.tasks.push(task);
-      localStorage.setItem('user', JSON.stringify(user)); 
+      localStorage.setItem('user', JSON.stringify(user));
       createCard(task);
     }
   }
 
 };
+
+function compareDate(startDate, endDate) {
+  let start = new Date(startDate);
+  let end = new Date(endDate);
+  if ((end.getTime() - start.getTime()) < 0) {
+    return false
+  }
+  return true;
+}
 
 let welcomeModelTask = document.getElementById("welcomeModelTask");
 
@@ -207,7 +224,7 @@ window.onpopstate = function () {
 };
 
 // view saved tasks cards 
-for(let i =0 ; i<user.length; i++)
-if(user[i].isLogged){
-    user[i].tasks.forEach((e)=>createCard(e)) 
-}
+for (let i = 0; i < user.length; i++)
+  if (user[i].isLogged) {
+    user[i].tasks.forEach((e) => createCard(e))
+  }
