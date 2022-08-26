@@ -170,13 +170,15 @@ saveButton.onclick = (event) => {
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
     if (element.isLogged) {
+     
       let task = new Task(inputTitle, endDate, inputDescription, priority);
       console.log(task);
-      element.task = task;
+      element.tasks.push(task);
+      localStorage.setItem('user', JSON.stringify(user)); 
       createCard(task);
     }
   }
-  console.log(user);
+
 };
 
 let welcomeModelTask = document.getElementById("welcomeModelTask");
@@ -201,3 +203,9 @@ window.history.pushState(null, null, window.location.href);
 window.onpopstate = function () {
   window.history.go(1);
 };
+
+// view saved tasks cards 
+for(let i =0 ; i<user.length; i++)
+if(user[i].isLogged){
+    user[i].tasks.forEach((e)=>createCard(e)) 
+}
