@@ -27,7 +27,7 @@ class User {
     email,
     password,
     task = [],
-    isLogged = true
+    isLogged = false
   ) {
     this.firstName = firstName;
     this.lastName = lastName;
