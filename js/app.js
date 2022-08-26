@@ -35,8 +35,8 @@ function createCard(task) {
     let icon = document.createElement("i");
     icon.className = "fa-solid fa-pen-to-square";
     //  data-bs-toggle="modal" data-bs-target="#staticBackdrop
-    icon.setAttribute("data-bs-toggle","modal")
-    icon.setAttribute("data-bs-target","#staticBackdropG")
+    // icon.setAttribute("data-bs-toggle","modal")
+    // icon.setAttribute("data-bs-target","#staticBackdropG")
     aswomContaner.append(icon);
 
   //I have added id to the iconXmark to use it with delete it
@@ -118,9 +118,9 @@ let logout = document.getElementById("logoutModal");
 logout.onclick = (event) => {
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
-    if (element.isLogged) {
+   
       element.isLogged = false;
-    }
+    
   }
   console.log(user);
   localStorage.setItem("user", JSON.stringify(user));
@@ -193,6 +193,8 @@ let delCardIcon = document.getElementById("delCardIcon");
 
 function deleteCard(id) {
   let delCard = document.getElementById(id);
+  console.log(id);
+
   delCard.parentElement.parentElement.parentElement.parentElement.remove(
     delCard
   );
