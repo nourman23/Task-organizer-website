@@ -125,18 +125,21 @@ function getSaveDate() {
 }
 
 // Save new task button
+let user = [];
+if (getSaveDate()) {
+  user = getSaveDate();
+}
+function setDataInLocal(userArray) {
+  localStorage.setItem("user", JSON.stringify(userArray));
+}
 
-let user = getSaveDate();
 // test case --------
 // let newUser = new User("Anas", "mohammed", "tt@ttt.com", "12234");
 // user.push(newUser);
 
-localStorage.setItem("user", JSON.stringify(user));
 // ---------
 let saveButton = document.getElementById("saveNewTask");
 saveButton.onclick = (event) => {
-  user = getSaveDate();
-
   let inputTitle = document.getElementById("inputTitle").value;
   let startDate = document.getElementById("startDate").value;
   let endDate = document.getElementById("endDate").value;
