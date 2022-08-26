@@ -7,13 +7,15 @@ let row = document.createElement("div");
 row.className = "row";
 allcards.append(row);
 let id = 0;
+
+//create card 
 function createCard(task) {
-  id++;
+ 
   let col = document.createElement("div");
   col.className = "col-sm-4";
   col.setAttribute("id", id);
   row.append(col);
-
+  
   //I have added id to the card to use it with delete it
   let card = document.createElement("div");
   card.className = "card text-center m-3";
@@ -43,7 +45,7 @@ function createCard(task) {
   let iconXmark = document.createElement("i");
   iconXmark.setAttribute("id", "delCardIcon");
   iconXmark.className = "fa-solid fa-circle-xmark";
-  iconXmark.setAttribute("onclick", "deleteCard(id)");
+  iconXmark.setAttribute("onclick", "deleteCard("+id+")");
 
   aswomContaner.append(iconXmark);
 
@@ -78,6 +80,8 @@ function createCard(task) {
   inputCheckbox.className = "form-check-input mt-0";
   inputCheckbox.type = "checkbox";
   inputCheckbox.value = '"';
+  inputCheckbox.setAttribute("class" , "checkbox")
+  inputCheckbox.setAttribute("onclick", "completedTasks("+id+")");
   inputCheckbox.ariaLabel = "Checkbox for following text input";
   checkboxDiv.append(inputCheckbox);
 
@@ -103,12 +107,19 @@ function createCard(task) {
   cardFooter.append(saveSpan);
 
 
+  let saveIcon = document.createElement("i");
+  saveIcon.className = "fa-solid fa-circle-check";
+  saveSpan.append(saveIcon);
+  id++;
+
+
 }
 
 // save change 
 let saveChange = document.getElementById("saveChange");
 
 saveChange.onclick = event => {
+
 
 }
 
@@ -210,11 +221,9 @@ let delCardIcon = document.getElementById("delCardIcon");
 
 function deleteCard(id) {
   let delCard = document.getElementById(id);
-  console.log(id);
 
-  delCard.parentElement.parentElement.parentElement.parentElement.remove(
-    delCard
-  );
+  delCard.remove();
+
 }
 
 // Disable back button
@@ -224,7 +233,67 @@ window.onpopstate = function () {
 };
 
 // view saved tasks cards 
-for (let i = 0; i < user.length; i++)
-  if (user[i].isLogged) {
-    user[i].tasks.forEach((e) => createCard(e))
-  }
+
+
+    for(let i =0 ; i<user.length; i++)
+    if(user[i].isLogged){
+        user[i].tasks.forEach((e)=>createCard(e)) 
+    }
+
+/* 
+let task = new Task(inputTitle, endDate, inputDescription, priority);
+      console.log(task);
+      element.tasks.push(task);
+       */
+function completedTasks(id){
+    for(let i =0 ; i<user.length; i++){
+        let element = user[i]
+        if(element.isLogged){
+            if(element.tasks[id].completed==false)
+            element.tasks[id].completed=true
+            else
+            element.tasks[id].completed=false
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+    }
+   
+}
+
+// clear all completed tasks
+// let clearAll = document.querySelectorAll('.clear');
+// clearAll[0].addEventListener('click' , clearCompletedT())
+// clearAll[1].addEventListener('click' , clearCompletedT())
+
+
+// function clearCompletedT(){
+// let completeTask=[]
+//     for(let i =0 ; i<user.length; i++){
+//         let element = user[i]
+//         if(element.isLogged){
+//           for(let j=0 ; j<element.tasks.length;j++){
+            
+//             if(element.tasks[j].completed==true){
+//                 // completeTask.push(element.tasks[j])
+//                 if(element.tasks.length==1){
+//                     deleteCard(0)
+//                     element.tasks.splice(0, 1);
+                   
+//                 }
+//                 // element.tasks.splice(0, 1);
+//                 else{
+//                     deleteCard(j)
+//                     element.tasks.splice(j, 1);
+//                 }
+               
+            
+//             }
+         
+//         }
+//         localStorage.setItem('user', JSON.stringify(user));
+       
+        
+//         }
+//     }
+     
+// }
+
