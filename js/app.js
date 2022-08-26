@@ -250,6 +250,7 @@ let priorityLow = document.getElementById("priorityLow");
 
 
 priorityCritical.onclick = event => {
+  event.preventDefault()
 
   let taskArray = []
 
@@ -279,6 +280,7 @@ priorityCritical.onclick = event => {
 }
 
 priorityNormal.onclick = event => {
+  event.preventDefault()
 
   let taskArray = []
 
@@ -309,6 +311,7 @@ priorityNormal.onclick = event => {
 }
 
 priorityLow.onclick = event => {
+  event.preventDefault()
 
   let taskArray = []
 
@@ -362,6 +365,7 @@ function completedTasks(id){
 let completeState = document.getElementById("completeState");
 
 completeState.onclick = event => {
+  event.preventDefault()
 
   let taskArray = []
 
@@ -394,6 +398,7 @@ completeState.onclick = event => {
 let incompleteState = document.getElementById("incompleteState");
 
 incompleteState.onclick = event => {
+  event.preventDefault()
 
   let taskArray = []
 
@@ -422,6 +427,42 @@ incompleteState.onclick = event => {
  }
 
 }
+
+// without filter
+
+let without = document.getElementById("redo")
+
+without.onclick = event => {
+  event.preventDefault()
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+  
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      console.log(card);
+      card.style.display="block"
+    
+    
+  }
+  
+ }
+
+}
+
+
 
 // clear all completed tasks
 // let clearAll = document.querySelectorAll('.clear');
