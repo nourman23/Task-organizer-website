@@ -171,7 +171,7 @@ saveButton.onclick = (event) => {
     const element = user[i];
     if (element.isLogged) {
      
-      let task = new Task(inputTitle, endDate, inputDescription, priority);
+      let task = new Task(inputTitle, endDate,startDate, inputDescription, priority);
       console.log(task);
       element.tasks.push(task);
       localStorage.setItem('user', JSON.stringify(user)); 
