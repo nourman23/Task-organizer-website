@@ -1,5 +1,5 @@
 // side_tasks-form
-let refId=0;
+let refId = 0;
 ////////////////////////////////////
 // Create Card after save
 let allcards = document.getElementById("cards");
@@ -217,7 +217,7 @@ saveButton.onclick = (event) => {
       let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, refId);
       console.log(task);
       element.tasks.push(task);
-      createCard(task ,refId);
+      createCard(task, refId);
       refId++;
       localStorage.setItem('user', JSON.stringify(user));
     }
@@ -318,10 +318,10 @@ priorityCritical.onclick = event => {
 
 
 // view saved tasks cards 
-    for(let i =0 ; i<user.length; i++)
-    if(user[i].isLogged){
-        user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
-    }
+for (let i = 0; i < user.length; i++)
+  if (user[i].isLogged) {
+    user[i].tasks.forEach((e) => { createCard(e, user[i].tasks[refId].idDOM); refId++; })
+  }
 
 priorityNormal.onclick = event => {
   event.preventDefault()
@@ -647,6 +647,21 @@ function saveChange(id) {
 
   cardDetails.textContent = editInputDescription.value
   remainTime.textContent = calculateRemainTime(editStartDate.value, editEndDate.value)
+
+  // console.log(user[0].tasks[id]);
+  let userLoggedIn = [];
+  for (let i = 0; i < user.length; i++) {
+    let element = user[i]
+    if (element.isLogged) {
+     element.tasks[id].title=editInputTitle.value
+     element.tasks[id].date=editEndDate.value
+     element.tasks[id].priority=priority.textContent
+     element.tasks[id].remainTime=  remainTime.textContent
+     element.tasks[id].details=   cardDetails.textContent
+    }
+  }
+  setDataInLocal(user)
+  // console.log(userLoggedIn[id]);
 }
 
 function calculateRemainTime(startDate, dateAsString) {
@@ -655,4 +670,14 @@ function calculateRemainTime(startDate, dateAsString) {
   let time = date2.getTime() - date1.getTime();
   let days = time / (1000 * 3600 * 24);
   return Math.floor(days);
+}
+
+let welcomeName = document.getElementById("welcomeName");
+
+for (let i = 0; i < user.length; i++) {
+  let element = user[i]
+  if (element.isLogged) {
+    welcomeName.textContent = `Welcome ${element.firstName}`
+  }
+
 }
