@@ -126,26 +126,26 @@ function createCard(task, id) {
 
 }
 
-  ///////////// this function calculate the time by month *Turkyeh
-  let month = 0;
-  let day = 0;
-  function timedeteles(params) {
-    if (!isNaN(params)) {
-      if (params >= 30) {
-        day = params % 30;
-        month = Math.floor(params / 30);
-      }
-      else {
-        day = params % 30;
-        month = 0;
-  
-      }
-      return `Month: ${month} \t Day: ${day} \t`;
+///////////// this function calculate the time by month *Turkyeh
+let month = 0;
+let day = 0;
+function timedeteles(params) {
+  if (!isNaN(params)) {
+    if (params >= 30) {
+      day = params % 30;
+      month = Math.floor(params / 30);
     }
-    return ` `
-  };
+    else {
+      day = params % 30;
+      month = 0;
 
-  // //////////////////////////////////////////////////////////////////////////
+    }
+    return `Month: ${month} \t Day: ${day} \t`;
+  }
+  return ` `
+};
+
+// //////////////////////////////////////////////////////////////////////////
 
 // logout function
 
@@ -200,16 +200,24 @@ saveButton.onclick = (event) => {
   } else {
     priority = "Low priority";
   }
+  let dateValid = document.getElementById("dateValid");
+  let titleValid = document.getElementById("titleValid");
 
-  //FIXME: debugs
+  console.log(titleValid);
   if (inputTitle == "" || inputTitle === null) {
+    titleValid.style.display = "block"
     return
+  } else {
+    titleValid.style.display = "none"
+
   }
   console.log(compareDate(startDate, endDate));
   if (!compareDate(startDate, endDate)) {
-
-
+    dateValid.style.display = "block"
     return
+  } else {
+    dateValid.style.display = "none"
+
   }
 
 
@@ -231,6 +239,9 @@ saveButton.onclick = (event) => {
 function compareDate(startDate, endDate) {
   let start = new Date(startDate);
   let end = new Date(endDate);
+  if (end.getTime() == start.getTime()) {
+    return true
+  }
   if ((end.getTime() - start.getTime()) < 0) {
     return false
   }
@@ -650,7 +661,7 @@ function saveChange(id) {
 
   cardDetails.textContent = editInputDescription.value
   let time = calculateRemainTime(editStartDate.value, editEndDate.value)
-  console.log(time,"time");
+  console.log(time, "time");
   remainTime.textContent = timedeteles(time)
 
   // console.log(user[0].tasks[id]);
@@ -658,11 +669,11 @@ function saveChange(id) {
   for (let i = 0; i < user.length; i++) {
     let element = user[i]
     if (element.isLogged) {
-     element.tasks[id].title=editInputTitle.value
-     element.tasks[id].date=editEndDate.value
-     element.tasks[id].priority=priority.textContent
-     element.tasks[id].remainTime=  remainTime.textContent
-     element.tasks[id].details=   cardDetails.textContent
+      element.tasks[id].title = editInputTitle.value
+      element.tasks[id].date = editEndDate.value
+      element.tasks[id].priority = priority.textContent
+      element.tasks[id].remainTime = remainTime.textContent
+      element.tasks[id].details = cardDetails.textContent
     }
   }
   setDataInLocal(user)
