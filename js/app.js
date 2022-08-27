@@ -77,6 +77,7 @@ function createCard(task , id) {
 
   let inputCheckbox = document.createElement("input");
   inputCheckbox.className = "form-check-input mt-0";
+  inputCheckbox.id=`compete-${id}`;
   inputCheckbox.type = "checkbox";
   inputCheckbox.value = '"';
   inputCheckbox.setAttribute("class" , "checkbox")
@@ -259,8 +260,58 @@ window.onpopstate = function () {
 // filter by priority
 
 let priorityCritical = document.getElementById("priorityCritical");
+let priorityNormal = document.getElementById("priorityNormal");
+let priorityLow = document.getElementById("priorityLow");
+
+
 
 priorityCritical.onclick = event => {
+  event.preventDefault()
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.priority!="Critical") {
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+}
+
+
+// view saved tasks cards 
+let refId=0;
+    for(let i =0 ; i<user.length; i++)
+    if(user[i].isLogged){
+        user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
+    }
+
+/* 
+let task = new Task(inputTitle, endDate, inputDescription, priority);
+      console.log(task);
+      element.tasks.push(task);
+       */
+
+
+priorityNormal.onclick = event => {
+  event.preventDefault()
 
   let taskArray = []
 
@@ -277,10 +328,10 @@ priorityCritical.onclick = event => {
   const element = taskArray[index];
   for (let index = 0; index < element.length; index++) {
     const task = element[index];
-    if (task.priority!="Critical") {
+    if (task.priority!="Normal") {
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-      console.log(card);
+      
       card.style.display="none"
     }
     
@@ -288,21 +339,44 @@ priorityCritical.onclick = event => {
   
  }
 
-  // console.log(taskPriority);
 }
 
-// view saved tasks cards 
-let refId=0;
-    for(let i =0 ; i<user.length; i++)
-    if(user[i].isLogged){
-        user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
+priorityLow.onclick = event => {
+  event.preventDefault()
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
     }
 
-/* 
-let task = new Task(inputTitle, endDate, inputDescription, priority);
-      console.log(task);
-      element.tasks.push(task);
-       */
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.priority!="Low priority") {
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+}
+
+
+
+   
+
+
 
 function completedTasks(id){
     
@@ -331,6 +405,112 @@ function completedTasks(id){
     }
    
 }
+
+
+
+
+// filter bu complete state
+let completeState = document.getElementById("completeState");
+
+completeState.onclick = event => {
+  event.preventDefault()
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.completed== false) {
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+}
+
+let incompleteState = document.getElementById("incompleteState");
+
+incompleteState.onclick = event => {
+  event.preventDefault()
+
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+    if (task.completed== true) {
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+      
+      card.style.display="none"
+    }
+    
+  }
+  
+ }
+
+}
+
+// without filter
+
+let without = document.getElementById("redo")
+
+without.onclick = event => {
+  event.preventDefault()
+  let taskArray = []
+
+  for (let index = 0; index < user.length; index++) {
+    const element = user[index];
+    if (element.isLogged) {
+      // console.log(element);
+      taskArray.push(element.tasks)
+    }
+
+  }
+
+ for (let index = 0; index < taskArray.length; index++) {
+  const element = taskArray[index];
+  for (let index = 0; index < element.length; index++) {
+    const task = element[index];
+  
+      let id = (task.idDOM).toString()
+      let card = document.getElementById(id)
+     
+      card.style.display="block"
+    
+    
+  }
+  
+ }
+
+}
+
+
 
 
 // clear all completed tasks
