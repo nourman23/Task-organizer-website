@@ -11,7 +11,7 @@ allcards.append(row);
 function createCard(task, id) {
 
   let col = document.createElement("div");
-  col.className = "col-sm-4";
+  col.className = "col-sm-7 col-md-6 col-lg-4";
   col.setAttribute("id", id);
   row.append(col);
 
