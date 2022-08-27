@@ -8,13 +8,13 @@ row.className = "row";
 allcards.append(row);
 
 //create card 
-function createCard(task , id) {
- 
+function createCard(task, id) {
+
   let col = document.createElement("div");
   col.className = "col-sm-4";
   col.setAttribute("id", id);
   row.append(col);
-  
+
   //I have added id to the card to use it with delete it
   let card = document.createElement("div");
   card.className = "card text-center m-3";
@@ -27,6 +27,7 @@ function createCard(task , id) {
 
   let spanTaskTitle = document.createElement("span");
   spanTaskTitle.textContent = task.title;
+  spanTaskTitle.id = `title-${id}`
   cardHeader.append(spanTaskTitle);
 
   let aswomContaner = document.createElement("span");
@@ -36,15 +37,16 @@ function createCard(task , id) {
   let icon = document.createElement("i");
   icon.className = "fa-solid fa-pen-to-square";
   //  data-bs-toggle="modal" data-bs-target="#staticBackdrop
-  // icon.setAttribute("data-bs-toggle","modal")
-  // icon.setAttribute("data-bs-target","#staticBackdropG")
+  icon.setAttribute("data-bs-toggle", "modal")
+  icon.setAttribute("data-bs-target", "#staticBackdropG")
+  icon.setAttribute("onclick", "edit(" + id + ")")
   aswomContaner.append(icon);
 
   //I have added id to the iconXmark to use it with delete it
   let iconXmark = document.createElement("i");
   iconXmark.setAttribute("id", "delCardIcon");
   iconXmark.className = "fa-solid fa-circle-xmark";
-  iconXmark.setAttribute("onclick", "deleteSingleCard("+id+")");
+  iconXmark.setAttribute("onclick", "deleteSingleCard(" + id + ")");
 
   aswomContaner.append(iconXmark);
 
@@ -55,6 +57,7 @@ function createCard(task , id) {
   let cardText = document.createElement("p");
   cardText.className = "card-text";
   cardText.textContent = task.details;
+  cardText.id = `card-details-${id}`
   cardBody.append(cardText);
 
   let checkboxContaner = document.createElement("div");
@@ -77,11 +80,11 @@ function createCard(task , id) {
 
   let inputCheckbox = document.createElement("input");
   inputCheckbox.className = "form-check-input mt-0";
-  inputCheckbox.id=`compete-${id}`;
+  inputCheckbox.id = `compete-${id}`;
   inputCheckbox.type = "checkbox";
   inputCheckbox.value = '"';
-  inputCheckbox.setAttribute("class" , "checkbox")
-  inputCheckbox.setAttribute("onclick", "completedTasks("+id+")");
+  inputCheckbox.setAttribute("class", "checkbox")
+  inputCheckbox.setAttribute("onclick", "completedTasks(" + id + ")");
   inputCheckbox.ariaLabel = "Checkbox for following text input";
   checkboxDiv.append(inputCheckbox);
 
@@ -92,6 +95,7 @@ function createCard(task , id) {
   spanPriority.className = "input-group-text position-absolute end-0";
   spanPriority.id = "inputGroup-sizing-default";
   spanPriority.textContent = task.priority;
+  spanPriority.id = `priority-${id}`
   divPriority.append(spanPriority);
 
   let cardFooter = document.createElement("div");
@@ -104,11 +108,10 @@ function createCard(task , id) {
   let month = 0;
   let day = 0;
   function timedeteles(params) {
-    if (params >=30)
-    {
+    if (params >= 30) {
       day = params % 30;
       month = Math.floor(params / 30);
-      }
+    }
     else {
       day = params % 30;
       month = 0;
@@ -117,13 +120,14 @@ function createCard(task , id) {
     return `Month: ${month} \t Day: ${day} \t`;
   };
 
-// //////////////////////////////////////////////////////////////////////////
+  // //////////////////////////////////////////////////////////////////////////
+
+  remainTime.id = `remain-time-${id}`
 
 
+  remainTime.textContent = timedeteles(task.remainTime);
 
-  remainTime.textContent = timedeteles(task.remainTime); 
 
-  
   cardFooter.append(remainTime);
 
   let saveSpan = document.createElement("span");
@@ -138,13 +142,7 @@ function createCard(task , id) {
 
 }
 
-// save change 
-let saveChange = document.getElementById("saveChange");
 
-saveChange.onclick = event => {
-
-
-}
 
 // logout function
 
@@ -199,6 +197,8 @@ saveButton.onclick = (event) => {
   } else {
     priority = "Low priority";
   }
+
+  //FIXME: debugs
   if (inputTitle == "" || inputTitle === null) {
     return
   }
@@ -214,12 +214,9 @@ saveButton.onclick = (event) => {
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
     if (element.isLogged) {
-
       let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, refId);
-      
       console.log(task);
       element.tasks.push(task);
-      
       createCard(task ,refId);
       refId++;
       localStorage.setItem('user', JSON.stringify(user));
@@ -243,24 +240,25 @@ window.onload = (event) => {
   welcomeModelTask.click();
 };
 //delete single card
-function deleteSingleCard(id){
-    for(let i =0 ; i<user.length; i++){
-        let element = user[i]
-        if(element.isLogged){
-          for(let j=0 ; j<element.tasks.length;j++){
-            if(element.tasks[j].idDOM==id){
-                if(element.tasks.length==1){
-                    deleteCard(element.tasks[j].idDOM)
-                    element.tasks.splice(0, 1);
-                }
-                else{
-                    deleteCard(element.tasks[j].idDOM)
-                    element.tasks.splice(j, 1);
-                }
-            }
+function deleteSingleCard(id) {
+  for (let i = 0; i < user.length; i++) {
+    let element = user[i]
+    if (element.isLogged) {
+      for (let j = 0; j < element.tasks.length; j++) {
+        if (element.tasks[j].idDOM == id) {
+          if (element.tasks.length == 1) {
+            deleteCard(element.tasks[j].idDOM)
+            element.tasks.splice(0, 1);
+          }
+          else {
+            deleteCard(element.tasks[j].idDOM)
+            element.tasks.splice(j, 1);
+          }
         }
-        localStorage.setItem('user', JSON.stringify(user));}
+      }
+      localStorage.setItem('user', JSON.stringify(user));
     }
+  }
 }
 // Delete card
 let delCardIcon = document.getElementById("delCardIcon");
@@ -268,7 +266,7 @@ let delCardIcon = document.getElementById("delCardIcon");
 
 function deleteCard(id) {
   let delCard = document.getElementById(id);
-  delCard.remove();    
+  delCard.remove();
 
 }
 
@@ -302,37 +300,28 @@ priorityCritical.onclick = event => {
 
   }
 
- for (let index = 0; index < taskArray.length; index++) {
-  const element = taskArray[index];
-  for (let index = 0; index < element.length; index++) {
-    const task = element[index];
-    if (task.priority!="Critical") {
-      let id = (task.idDOM).toString()
-      let card = document.getElementById(id)
-      card.style.display="none"
+  for (let index = 0; index < taskArray.length; index++) {
+    const element = taskArray[index];
+    for (let index = 0; index < element.length; index++) {
+      const task = element[index];
+      if (task.priority != "Critical") {
+        let id = (task.idDOM).toString()
+        let card = document.getElementById(id)
+        card.style.display = "none"
+      }
+
     }
-    
+
   }
-  
- }
 
 }
 
 
 // view saved tasks cards 
-
     for(let i =0 ; i<user.length; i++)
     if(user[i].isLogged){
         user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
     }
-
-
-/* 
-let task = new Task(inputTitle, endDate, inputDescription, priority);
-      console.log(task);
-      element.tasks.push(task);
-       */
-
 
 priorityNormal.onclick = event => {
   event.preventDefault()
@@ -348,20 +337,20 @@ priorityNormal.onclick = event => {
 
   }
 
- for (let index = 0; index < taskArray.length; index++) {
-  const element = taskArray[index];
-  for (let index = 0; index < element.length; index++) {
-    const task = element[index];
-    if (task.priority!="Normal") {
-      let id = (task.idDOM).toString()
-      let card = document.getElementById(id)
-      
-      card.style.display="none"
+  for (let index = 0; index < taskArray.length; index++) {
+    const element = taskArray[index];
+    for (let index = 0; index < element.length; index++) {
+      const task = element[index];
+      if (task.priority != "Normal") {
+        let id = (task.idDOM).toString()
+        let card = document.getElementById(id)
+
+        card.style.display = "none"
+      }
+
     }
-    
+
   }
-  
- }
 
 }
 
@@ -379,55 +368,45 @@ priorityLow.onclick = event => {
 
   }
 
- for (let index = 0; index < taskArray.length; index++) {
-  const element = taskArray[index];
-  for (let index = 0; index < element.length; index++) {
-    const task = element[index];
-    if (task.priority!="Low priority") {
-      let id = (task.idDOM).toString()
-      let card = document.getElementById(id)
-      
-      card.style.display="none"
+  for (let index = 0; index < taskArray.length; index++) {
+    const element = taskArray[index];
+    for (let index = 0; index < element.length; index++) {
+      const task = element[index];
+      if (task.priority != "Low priority") {
+        let id = (task.idDOM).toString()
+        let card = document.getElementById(id)
+
+        card.style.display = "none"
+      }
+
     }
-    
+
   }
-  
- }
 
 }
 
+function completedTasks(id) {
+  for (let i = 0; i < user.length; i++) {
+    let element = user[i]
+    if (element.isLogged) {
 
-
-   
-
-
-
-function completedTasks(id){
-    
-    for(let i =0 ; i<user.length; i++){
-        let element = user[i]
-        if(element.isLogged){
-       
-            for(let i=0 ; i<element.tasks.length;i++){
-                if(  element.tasks[i].idDOM==id){
-                    console.log(element.tasks[i].idDOM)
-                    if(element.tasks[i].completed==false)
-                    element.tasks[i].completed=true
-                    else
-                    element.tasks[i].completed=false
-                }
-                else{
-
-                }
-                localStorage.setItem('user', JSON.stringify(user));
-            }
-            
-         
-            
-            
+      for (let i = 0; i < element.tasks.length; i++) {
+        if (element.tasks[i].idDOM == id) {
+          console.log(element.tasks[i].idDOM)
+          if (element.tasks[i].completed == false)
+            element.tasks[i].completed = true
+          else
+            element.tasks[i].completed = false
         }
+        else {
+
+        }
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+
     }
-   
+  }
+
 }
 
 
@@ -435,12 +414,9 @@ function completedTasks(id){
 
 // filter bu complete state
 let completeState = document.getElementById("completeState");
-
 completeState.onclick = event => {
   event.preventDefault()
-
   let taskArray = []
-
   for (let index = 0; index < user.length; index++) {
     const element = user[index];
     if (element.isLogged) {
@@ -450,20 +426,20 @@ completeState.onclick = event => {
 
   }
 
- for (let index = 0; index < taskArray.length; index++) {
-  const element = taskArray[index];
-  for (let index = 0; index < element.length; index++) {
-    const task = element[index];
-    if (task.completed== false) {
-      let id = (task.idDOM).toString()
-      let card = document.getElementById(id)
-      
-      card.style.display="none"
+  for (let index = 0; index < taskArray.length; index++) {
+    const element = taskArray[index];
+    for (let index = 0; index < element.length; index++) {
+      const task = element[index];
+      if (task.completed == false) {
+        let id = (task.idDOM).toString()
+        let card = document.getElementById(id)
+
+        card.style.display = "none"
+      }
+
     }
-    
+
   }
-  
- }
 
 }
 
@@ -483,20 +459,20 @@ incompleteState.onclick = event => {
 
   }
 
- for (let index = 0; index < taskArray.length; index++) {
-  const element = taskArray[index];
-  for (let index = 0; index < element.length; index++) {
-    const task = element[index];
-    if (task.completed== true) {
-      let id = (task.idDOM).toString()
-      let card = document.getElementById(id)
-      
-      card.style.display="none"
+  for (let index = 0; index < taskArray.length; index++) {
+    const element = taskArray[index];
+    for (let index = 0; index < element.length; index++) {
+      const task = element[index];
+      if (task.completed == true) {
+        let id = (task.idDOM).toString()
+        let card = document.getElementById(id)
+
+        card.style.display = "none"
+      }
+
     }
-    
+
   }
-  
- }
 
 }
 
@@ -517,20 +493,20 @@ without.onclick = event => {
 
   }
 
- for (let index = 0; index < taskArray.length; index++) {
-  const element = taskArray[index];
-  for (let index = 0; index < element.length; index++) {
-    const task = element[index];
-  
+  for (let index = 0; index < taskArray.length; index++) {
+    const element = taskArray[index];
+    for (let index = 0; index < element.length; index++) {
+      const task = element[index];
+
       let id = (task.idDOM).toString()
       let card = document.getElementById(id)
-     
-      card.style.display="block"
-    
-    
+
+      card.style.display = "block"
+
+
+    }
+
   }
-  
- }
 
 }
 
@@ -543,42 +519,42 @@ without.onclick = event => {
 // clearAll[1].addEventListener('click' , clearCompletedT())
 
 
-function clearCompletedT(){
-let completeTask=[]
-    for(let i =0 ; i<user.length; i++){
-        let element = user[i]
-        if(element.isLogged){
-          for(let j=0 ; j<element.tasks.length;j++){
-            
-            if(element.tasks[j].completed==true){
-                completeTask.push(element.tasks[j])
+function clearCompletedT() {
+  let completeTask = []
+  for (let i = 0; i < user.length; i++) {
+    let element = user[i]
+    if (element.isLogged) {
+      for (let j = 0; j < element.tasks.length; j++) {
+
+        if (element.tasks[j].completed == true) {
+          completeTask.push(element.tasks[j])
+        }
+
+
+      }
+      completeTask.forEach(e => {
+
+        for (let i = 0; i < element.tasks.length; i++) {
+          if (element.tasks[i].idDOM == e.idDOM) {
+            deleteCard(e.idDOM)
+            if (element.tasks.length == 1) {
+              element.tasks.splice(0, 1);
             }
 
-         
-        }
-        completeTask.forEach(e=>{
-          
-          for(let i=0;i<element.tasks.length;i++){
-            if(  element.tasks[i].idDOM==e.idDOM){
-              deleteCard(e.idDOM)
-            if(element.tasks.length==1){
-              element.tasks.splice(0, 1);
-          }
-          
-          else{
+            else {
               element.tasks.splice(i, 1);
+            }
           }
         }
-          }
-         
-        })
 
-        localStorage.setItem('user', JSON.stringify(user));
-       
-        
-        }
+      })
+
+      localStorage.setItem('user', JSON.stringify(user));
+
+
     }
-     
+  }
+
 }
 
 
@@ -586,17 +562,97 @@ let completeTask=[]
 //completed tasks are checked after refresh
 window.addEventListener('load', (event) => {
   let checkboxes = document.querySelectorAll('.checkbox')
-for(let i =0 ; i<user.length; i++){
-        let element = user[i]
-        if(element.isLogged){
-            for(let i=0 ; i<element.tasks.length;i++){
-                    if(element.tasks[i].completed==false){
-                      checkboxes[i].checked=false
-                    }
-                    else{
-                      checkboxes[i].checked=true
-                    }
-            }  
+  for (let i = 0; i < user.length; i++) {
+    let element = user[i]
+    if (element.isLogged) {
+      for (let i = 0; i < element.tasks.length; i++) {
+        if (element.tasks[i].completed == false) {
+          checkboxes[i].checked = false
         }
+        else {
+          checkboxes[i].checked = true
+        }
+      }
     }
+  }
 });
+
+// save change 
+function edit(id) {
+
+  let saveEditBtn = document.getElementById("saveEditBtn")
+  saveEditBtn.setAttribute("onclick", "saveChange(" + id + ")")
+  let card = document.getElementById(id);
+  let cardTitle = document.getElementById(`title-${id}`)
+  let cardDetails = document.getElementById(`card-details-${id}`)
+  let priority = document.getElementById(`priority-${id}`)
+  let remainTime = document.getElementById(`remain-time-${id}`)
+  console.log(id);
+  /*
+  console.log(cardDetails.textContent);
+  console.log(cardTitle.textContent);
+  console.log(priority.textContent);
+  console.log(remainTime.textContent);
+*/
+  console.log(priority.textContent);
+  let modalTitle = document.getElementById("modalTilte")
+  let editInputTitle = document.getElementById("editInputTitle")
+  let editInputDescription = document.getElementById("editInputDescription")
+  let editCriticalR = document.getElementById("editCriticalR")
+  let editNormalR = document.getElementById("editNormalR")
+  let editLowR = document.getElementById("editLowR")
+  console.log(modalTitle);
+  modalTitle.textContent = `Edit task ${cardTitle.textContent}`
+
+  editInputTitle.value = cardTitle.textContent
+  editInputDescription.value = cardDetails.textContent
+
+  if (priority.textContent == "Low priority") {
+    editLowR.setAttribute("checked", "true")
+  } else if (priority.textContent == "Critical") {
+    editCriticalR.setAttribute("checked", "true")
+  } else {
+    editNormalR.setAttribute("checked", "true")
+  }
+
+
+}
+
+function saveChange(id) {
+  let cardTitle = document.getElementById(`title-${id}`)
+  let cardDetails = document.getElementById(`card-details-${id}`)
+  let priority = document.getElementById(`priority-${id}`)
+  let remainTime = document.getElementById(`remain-time-${id}`)
+
+  let modalTitle = document.getElementById("modalTilte")
+  let editInputTitle = document.getElementById("editInputTitle")
+  let editInputDescription = document.getElementById("editInputDescription")
+  let editStartDate = document.getElementById("editStartDate")
+  let editEndDate = document.getElementById("editEndDate")
+  let editCriticalR = document.getElementById("editCriticalR")
+  let editNormalR = document.getElementById("editNormalR")
+  let editLowR = document.getElementById("editLowR")
+
+  cardTitle.textContent = editInputTitle.value
+  let priorityEdit = "";
+  if (editCriticalR.checked) {
+    priorityEdit = "Critical";
+  } else if (editNormalR.checked) {
+    priorityEdit = "Normal";
+  } else {
+    priorityEdit = "Low priority";
+  }
+
+  priority.textContent = priorityEdit
+
+  cardDetails.textContent = editInputDescription.value
+  remainTime.textContent = calculateRemainTime(editStartDate.value, editEndDate.value)
+}
+
+function calculateRemainTime(startDate, dateAsString) {
+  let date1 = new Date(startDate);
+  let date2 = new Date(dateAsString);
+  let time = date2.getTime() - date1.getTime();
+  let days = time / (1000 * 3600 * 24);
+  return Math.floor(days);
+}
