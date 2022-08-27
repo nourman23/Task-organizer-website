@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport"/>
+  <meta name="viewport" />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./style/style.css" />
 
   <title>Tasks</title>
+
 
 <style>@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
@@ -89,6 +90,7 @@
 
 
 </style>
+
 
 
 </head>
@@ -172,16 +174,25 @@
       <!-- Task form  -->
 
       <div class="col-md-1 col-sm-1"></div>
+
       <div class="taskform col-md-6 col-sm-9" >
         <h3 class="title text-center">NEW TASK</h3>
+
         <div class="card">
           <!-- Title input -->
+          <h6 class="text-center text-danger" id="titleValid" style="margin: 0; padding: 0; font-size: 0.8rem; display: none;">Enter
+            Title to Create New Task</h6>
+
           <div class="input-group mb-3">
            
             <input type="text" class="form-control" id="inputTitle" aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default" placeholder="Title"/>
           </div>
+
           <!-- Date input -->
+          <h6 class="text-center text-danger" id="dateValid" style="margin: 0; padding: 0; font-size: 0.8rem; display: none;">Can't
+            start date be after end date </h6>
+
           <div class="input-group input-daterange mb-3">
             <div class="input-group-addon">Date:&nbsp;</div>
             <input id="startDate" type="date" class="form-control" placeholder="2012-04-05" />
@@ -251,43 +262,44 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
       data-bs-whatever="@mdo" style="display:none" id="welcomeModelTask">click here</button>
 
-    <div class=".modal-fullscreen" style="background-color:black" >
-<!-- this part change the porder color  -->
+    <div class=".modal-fullscreen" style="background-color:black">
+      <!-- this part change the porder color  -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-          <div class="modal-content" style=" border-color: #2421fc ; background-color:white; padding: 20px; box-shadow:hsl(240, 100%, 64%)  2px 5px 7px;">
+          <div class="modal-content"
+            style=" border-color: #2421fc ; background-color:white; padding: 20px; box-shadow:hsl(240, 100%, 64%)  2px 5px 7px;">
             <div class="modal-header">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-        <!-- responsize and mack introduction page Turkyeh -->
-        <div class="modal-body"  >
-          <form>
-            <h5 class="carousel-item__subtitle"><i class="fa fa-spinner fa-spin"></i> Welcome in your </h5>
-            <section><br><br>
-              <div class="content carousel-item__title" >
-                <h2>MANAGEMENT TASK SYSTEAM</h2>
-                <h2>MANAGEMENT TASK SYSTEAM</h2>
-              </div>
-            </section><br><br><br>
-            <!-- <h1 class="carousel-item__title">MANAGEMENT TASK SYSTEAM </h1><br> -->
-            <p class="carousel-item__description">You can control the creation<br> and
-              management of tasks <br>track their flowchart
-              <br> in
-              addition to adding your own modifications in <br>a professional manner.
-            </p>
-          </form>
-        </div>
-        <br><br><br>
-        <div class="col-md-3.ms-auto">
-          <img src="https://i.pinimg.com/originals/e6/a9/1c/e6a91cf71ae7ef9c95cf6518852eddb5.gif" style="position:absolute; top:40% ; left: 60%; position:absolute;width:25vw;
+            <!-- responsize and mack introduction page Turkyeh -->
+            <div class="modal-body">
+              <form>
+                <h5 class="carousel-item__subtitle"><i class="fa fa-spinner fa-spin"></i> Welcome in your </h5>
+                <section><br><br>
+                  <div class="content carousel-item__title">
+                    <h2>MANAGEMENT TASK SYSTEAM</h2>
+                    <h2>MANAGEMENT TASK SYSTEAM</h2>
+                  </div>
+                </section><br><br><br>
+                <!-- <h1 class="carousel-item__title">MANAGEMENT TASK SYSTEAM </h1><br> -->
+                <p class="carousel-item__description">You can control the creation<br> and
+                  management of tasks <br>track their flowchart
+                  <br> in
+                  addition to adding your own modifications in <br>a professional manner.
+                </p>
+              </form>
+            </div>
+            <br><br><br>
+            <div class="col-md-3.ms-auto">
+              <img src="https://i.pinimg.com/originals/e6/a9/1c/e6a91cf71ae7ef9c95cf6518852eddb5.gif" style="position:absolute; top:40% ; left: 60%; position:absolute;width:25vw;
             transition: 1s ease-in-out;
             transition-delay: .4s;
             
         ">
-        </div>
-        <center>
-          <!-- finish this part here  -->
+            </div>
+            <center>
+              <!-- finish this part here  -->
               <div class="modal-footer" style="position:absolute; top:70% ; left: 10%;">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 200px; ;">Start
                   now</button>
@@ -299,66 +311,67 @@
       </div>
 
       <div class="modal fade" id="staticBackdropG" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-      aria-labelledby="modalTilte" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalTilte">Edit Task</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-  
-            <h3 class="title text-center">Edit</h3>
-            <div class="card">
-              <!-- Title input -->
-              <div class="input-group mb-3">
-                <span class="input-group-text" aria-describedby="inputGroup-sizing-default">Title</span>
-                <input type="text" class="form-control" id="editInputTitle" aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default" />
-              </div>
-              <!-- Date input -->
-              <div class="input-group input-daterange mb-3">
-                <div class="input-group-addon">Date:&nbsp;</div>
-                <input id="editStartDate" type="date" class="form-control" placeholder="2012-04-05" />
-                <div class="input-group-addon">&nbsp; to &nbsp;</div>
-                <input id="editEndDate" type="date" class="form-control" placeholder="2012-04-19" />
-              </div>
-              <!-- Description input -->
-              <div class="input-group mb-3">
-                <span class="input-group-text">Description</span>
-                <textarea id="editInputDescription" class="form-control" style="height: 20vh"
-                  aria-label="With textarea"></textarea>
-              </div>
-  
-              <!-- Priority Input -->
-              <div class="form-check">
-                <span class="col-auto">
-                  <label class="col-form-label me-4 d-inline-block">Priority :</label>
-                </span>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="editCriticalR"
-                    value="critical" />
-                  <label class="form-check-label" for="criticalR">Critical</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="editNormalR" value="normal"
-                    default />
-                  <label class="form-check-label" for="normalR">Normal</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="editLowR" value="low priority" />
-                  <label class="form-check-label" for="lowR">Low priority</label>
-                </div>
-              </div>
+        aria-labelledby="modalTilte" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTilte">Edit Task</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveEditBtn">save</button>
+            <div class="modal-body">
+
+              <h3 class="title text-center">Edit</h3>
+              <div class="card">
+                <!-- Title input -->
+                <div class="input-group mb-3">
+                  <span class="input-group-text" aria-describedby="inputGroup-sizing-default">Title</span>
+                  <input type="text" class="form-control" id="editInputTitle" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" />
+                </div>
+                <!-- Date input -->
+                <div class="input-group input-daterange mb-3">
+                  <div class="input-group-addon">Date:&nbsp;</div>
+                  <input id="editStartDate" type="date" class="form-control" placeholder="2012-04-05" />
+                  <div class="input-group-addon">&nbsp; to &nbsp;</div>
+                  <input id="editEndDate" type="date" class="form-control" placeholder="2012-04-19" />
+                </div>
+                <!-- Description input -->
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Description</span>
+                  <textarea id="editInputDescription" class="form-control" style="height: 20vh"
+                    aria-label="With textarea"></textarea>
+                </div>
+
+                <!-- Priority Input -->
+                <div class="form-check">
+                  <span class="col-auto">
+                    <label class="col-form-label me-4 d-inline-block">Priority :</label>
+                  </span>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="editCriticalR"
+                      value="critical" />
+                    <label class="form-check-label" for="criticalR">Critical</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="editNormalR"
+                      value="normal" default />
+                    <label class="form-check-label" for="normalR">Normal</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="editLowR"
+                      value="low priority" />
+                    <label class="form-check-label" for="lowR">Low priority</label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveEditBtn">save</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </main>
 
 

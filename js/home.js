@@ -174,7 +174,8 @@ class Validation {
 
 
 	static MatchPassword(password, confirmPassword) {
-		return password == confirmPassword;
+		return password == confirmPassword && password !="" && confirmPassword !="";
+
 		// return true
 	}
 
