@@ -6,7 +6,7 @@ toggle = () => {
 	container.classList.toggle('sign-in')
 	container.classList.toggle('sign-up')
 
-	
+
 }
 
 setTimeout(() => {
@@ -34,6 +34,15 @@ function setDataInLocal(userArray) {
 
 if (getDataFromLocal()) {
 	userArray = getDataFromLocal()
+}
+
+for (let index = 0; index < userArray.length; index++) {
+	const element = userArray[index];
+	if (element.isLogged) {
+		location.href = "tasks.html"
+		break
+	}
+
 }
 
 
