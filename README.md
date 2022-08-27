@@ -11,7 +11,6 @@
     HTML/CSS
     Bootstrap 5 
 
-
-## Wireframe & Mockup
+[View Live Demo](https://abdullah97sh.github.io/Task-organizer-website/)
 
 
