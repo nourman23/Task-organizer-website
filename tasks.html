@@ -79,19 +79,11 @@
 
 
 }
-.fa-edit:before, .fa-pen-to-square:before {
-    content: "\f044";
-    color: #223dff;
-}
 .fa-circle-xmark:before, .fa-times-circle:before, .fa-xmark-circle:before {
     content: "\f057";
     color: red;
 }
 
-.fa-edit:hover{
-    content: "\f044";
-    color: #22ffa7;
-}
 
 
 
@@ -104,15 +96,15 @@
 <body class="taskB">
   <header>
     <nav>
-      <nav class="navbar navbar-expand-md bg-light">
+      <nav class="navbar navbar-expand-md ">
         <form class="container-fluid justify-content-start">
           <div class="navbar-brand text-light ps-5"><img src="Image/programming.png" alt="Logo" width="40px"
               height="30px"></div>
           </div>
           <div style="position:absolute ; right:20px  ; top:10px;">
-            <button class="btn btn-outline-success ms-auto"><span id="navbarIcon1"><img src="Image/moon.png" alt="Color"
+            <button class="btn  ms-auto"><span id="navbarIcon1"><img src="Image/moon.png" alt="Color"
                   height="20px" width="20px"></span></button>
-            <button class="btn btn-outline-success me-5"> <span id="navbarIcon2"><img src="Image/sun.png" alt="Color"
+            <button class="btn  me-5"> <span id="navbarIcon2"><img src="Image/sun.png" alt="Color"
                   height="20px" width="20px"></span></button>
           </div>
         </form>
@@ -124,9 +116,9 @@
   <main>
     <div class="wrapper">
       <!-- Sidebar -->
-      <nav id="sidebar1">
+      <nav id="sidebar1" >
         <div class="sidebar-header">
-          <h3 class="text-center" id="welcomeName">Welcome</h3>
+          <h3 id="welcomeName">Welcome</h3>
         </div>
 
         <ul class="list-unstyled components">
@@ -175,43 +167,19 @@
           </li>
         </ul>
       </nav>
-      <nav id="sidebar2">
-        <ul class="list-unstyled side2components">
-          <li class="byPriority">
-            <ion-icon name="filter-outline"></ion-icon>
-            <span>Filter by priority</span>
-          </li>
-
-          <li class="byStatus">
-            <ion-icon name="filter-outline"></ion-icon>
-            <span>Filter by status</span>
-          </li>
-          <li class="redo">
-            <ion-icon name="arrow-undo-circle-outline"></ion-icon>
-            <span>Without filters</span>
-          </li>
-          <li class="clear" id="clear" onclick="clearCompletedT()">
-            <ion-icon name="trash-outline"></ion-icon>
-            <span>Clear complete tasks</span>
-          </li>
-          <li class="logOut" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <ion-icon name="log-out-outline"></ion-icon>
-            <span>Logout</span>
-          </li>
-        </ul>
-      </nav>
+      
 
       <!-- Task form  -->
 
       <div class="col-md-1 col-sm-1"></div>
       <div class="taskform col-md-6 col-sm-9" >
-        <h3 class="title text-center">Add new task</h3>
+        <h3 class="title text-center">NEW TASK</h3>
         <div class="card">
           <!-- Title input -->
           <div class="input-group mb-3">
-            <span class="input-group-text" aria-describedby="inputGroup-sizing-default">Title</span>
+           
             <input type="text" class="form-control" id="inputTitle" aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default" />
+              aria-describedby="inputGroup-sizing-default" placeholder="Title"/>
           </div>
           <!-- Date input -->
           <div class="input-group input-daterange mb-3">
@@ -223,8 +191,7 @@
           <!-- Description input -->
 
           <div class="input-group mb-3">
-            <span class="input-group-text">Description</span>
-            <textarea id="inputDescription" class="form-control" style="max-height: 20vh ; min-height:20vh"
+            <textarea id="inputDescription" class="form-control" placeholder="Description" style="max-height: 20vh ; min-height:20vh"
               aria-label="With textarea"></textarea>
           </div>
 
@@ -248,8 +215,8 @@
           </div>
           <!-- Save button -->
           <div class="buttons">
-            <button type="button" class="btn btn-outline-success" id="saveNewTask">
-              Save
+            <button type="button" class="btn " id="saveNewTask">
+              ADD
             </button>
           </div>
         </div>
