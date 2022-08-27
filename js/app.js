@@ -1,5 +1,5 @@
 // side_tasks-form
-
+let refId=0;
 ////////////////////////////////////
 // Create Card after save
 let allcards = document.getElementById("cards");
@@ -180,7 +180,6 @@ function setDataInLocal(userArray) {
 // user.push(newUser);
 
 // ---------
-let TaskId = 0;
 let saveButton = document.getElementById("saveNewTask");
 saveButton.onclick = (event) => {
   let inputTitle = document.getElementById("inputTitle").value;
@@ -216,13 +215,13 @@ saveButton.onclick = (event) => {
     const element = user[i];
     if (element.isLogged) {
 
-      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, TaskId);
+      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, refId);
       
       console.log(task);
       element.tasks.push(task);
       
-      createCard(task ,TaskId);
-      TaskId++;
+      createCard(task ,refId);
+      refId++;
       localStorage.setItem('user', JSON.stringify(user));
     }
   }
@@ -321,7 +320,7 @@ priorityCritical.onclick = event => {
 
 
 // view saved tasks cards 
-let refId=0;
+
     for(let i =0 ; i<user.length; i++)
     if(user[i].isLogged){
         user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
