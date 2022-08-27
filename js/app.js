@@ -1,5 +1,5 @@
 // side_tasks-form
-
+let refId=0;
 ////////////////////////////////////
 // Create Card after save
 let allcards = document.getElementById("cards");
@@ -178,7 +178,6 @@ function setDataInLocal(userArray) {
 // user.push(newUser);
 
 // ---------
-let TaskId = 0;
 let saveButton = document.getElementById("saveNewTask");
 saveButton.onclick = (event) => {
   let inputTitle = document.getElementById("inputTitle").value;
@@ -215,14 +214,11 @@ saveButton.onclick = (event) => {
   for (let i = 0; i < user.length; i++) {
     const element = user[i];
     if (element.isLogged) {
-
-      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, TaskId);
-
+      let task = new Task(inputTitle, endDate, startDate, inputDescription, priority, refId);
       console.log(task);
       element.tasks.push(task);
-
-      createCard(task, TaskId);
-      TaskId++;
+      createCard(task ,refId);
+      refId++;
       localStorage.setItem('user', JSON.stringify(user));
     }
   }
@@ -322,20 +318,10 @@ priorityCritical.onclick = event => {
 
 
 // view saved tasks cards 
-// FIXME: we should cache the refId every refresh the counter start from zero 
-let refId = 0;
-for (let i = 0; i < user.length; i++)
-  if (user[i].isLogged) {
-    user[i].tasks.forEach((e) => { createCard(e, user[i].tasks[refId].idDOM); refId++; })
-  }
-
-
-/* 
-let task = new Task(inputTitle, endDate, inputDescription, priority);
-      console.log(task);
-      element.tasks.push(task);
-       */
-
+    for(let i =0 ; i<user.length; i++)
+    if(user[i].isLogged){
+        user[i].tasks.forEach((e)=>{createCard(e,user[i].tasks[refId].idDOM);refId++;}) 
+    }
 
 priorityNormal.onclick = event => {
   event.preventDefault()
@@ -399,14 +385,7 @@ priorityLow.onclick = event => {
 
 }
 
-
-
-
-
-
-
 function completedTasks(id) {
-
   for (let i = 0; i < user.length; i++) {
     let element = user[i]
     if (element.isLogged) {
@@ -425,9 +404,6 @@ function completedTasks(id) {
         localStorage.setItem('user', JSON.stringify(user));
       }
 
-
-
-
     }
   }
 
@@ -438,12 +414,9 @@ function completedTasks(id) {
 
 // filter bu complete state
 let completeState = document.getElementById("completeState");
-
 completeState.onclick = event => {
   event.preventDefault()
-
   let taskArray = []
-
   for (let index = 0; index < user.length; index++) {
     const element = user[index];
     if (element.isLogged) {
