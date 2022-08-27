@@ -100,7 +100,30 @@ function createCard(task) {
 
   let remainTime = document.createElement("span");
   remainTime.className = "text-muted";
-  remainTime.textContent = task.remainTime;
+  ///////////// this function calculate the time by month *Turkyeh
+  let month = 0;
+  let day = 0;
+  function timedeteles(params) {
+    if (params >=30)
+    {
+      day = params % 30;
+      month = Math.floor(params / 30);
+      }
+    else {
+      day = params % 30;
+      month = 0;
+
+    }
+    return `Month: ${month} \t Day: ${day} \t`;
+  };
+
+// //////////////////////////////////////////////////////////////////////////
+
+
+
+  remainTime.textContent = timedeteles(task.remainTime); 
+
+  
   cardFooter.append(remainTime);
 
   let saveSpan = document.createElement("span");
@@ -181,6 +204,8 @@ saveButton.onclick = (event) => {
   }
   console.log(compareDate(startDate, endDate));
   if (!compareDate(startDate, endDate)) {
+
+
     return
   }
 
