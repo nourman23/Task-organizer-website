@@ -583,3 +583,21 @@ let completeTask=[]
 }
 
 
+
+//completed tasks are checked after refresh
+window.addEventListener('load', (event) => {
+  let checkboxes = document.querySelectorAll('.checkbox')
+for(let i =0 ; i<user.length; i++){
+        let element = user[i]
+        if(element.isLogged){
+            for(let i=0 ; i<element.tasks.length;i++){
+                    if(element.tasks[i].completed==false){
+                      checkboxes[i].checked=false
+                    }
+                    else{
+                      checkboxes[i].checked=true
+                    }
+            }  
+        }
+    }
+});
