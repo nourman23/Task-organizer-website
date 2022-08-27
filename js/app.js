@@ -647,6 +647,21 @@ function saveChange(id) {
 
   cardDetails.textContent = editInputDescription.value
   remainTime.textContent = calculateRemainTime(editStartDate.value, editEndDate.value)
+
+  // console.log(user[0].tasks[id]);
+  let userLoggedIn = [];
+  for (let i = 0; i < user.length; i++) {
+    let element = user[i]
+    if (element.isLogged) {
+     element.tasks[id].title=editInputTitle.value
+     element.tasks[id].date=editEndDate.value
+     element.tasks[id].priority=priority.textContent
+     element.tasks[id].remainTime=  remainTime.textContent
+     element.tasks[id].details=   cardDetails.textContent
+    }
+  }
+  setDataInLocal(user)
+  // console.log(userLoggedIn[id]);
 }
 
 function calculateRemainTime(startDate, dateAsString) {
@@ -663,7 +678,6 @@ for (let i = 0; i < user.length; i++) {
   let element = user[i]
   if (element.isLogged) {
     welcomeName.textContent = `Welcome ${element.firstName}`
-
   }
 
 }
