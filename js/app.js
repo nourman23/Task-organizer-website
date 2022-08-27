@@ -104,23 +104,7 @@ function createCard(task, id) {
 
   let remainTime = document.createElement("span");
   remainTime.className = "text-muted";
-  ///////////// this function calculate the time by month *Turkyeh
-  let month = 0;
-  let day = 0;
-  function timedeteles(params) {
-    if (params >= 30) {
-      day = params % 30;
-      month = Math.floor(params / 30);
-    }
-    else {
-      day = params % 30;
-      month = 0;
 
-    }
-    return `Month: ${month} \t Day: ${day} \t`;
-  };
-
-  // //////////////////////////////////////////////////////////////////////////
 
   remainTime.id = `remain-time-${id}`
 
@@ -142,7 +126,26 @@ function createCard(task, id) {
 
 }
 
+  ///////////// this function calculate the time by month *Turkyeh
+  let month = 0;
+  let day = 0;
+  function timedeteles(params) {
+    if (!isNaN(params)) {
+      if (params >= 30) {
+        day = params % 30;
+        month = Math.floor(params / 30);
+      }
+      else {
+        day = params % 30;
+        month = 0;
+  
+      }
+      return `Month: ${month} \t Day: ${day} \t`;
+    }
+    return ` `
+  };
 
+  // //////////////////////////////////////////////////////////////////////////
 
 // logout function
 
@@ -646,7 +649,9 @@ function saveChange(id) {
   priority.textContent = priorityEdit
 
   cardDetails.textContent = editInputDescription.value
-  remainTime.textContent = calculateRemainTime(editStartDate.value, editEndDate.value)
+  let time = calculateRemainTime(editStartDate.value, editEndDate.value)
+  console.log(time,"time");
+  remainTime.textContent = timedeteles(time)
 
   // console.log(user[0].tasks[id]);
   let userLoggedIn = [];
