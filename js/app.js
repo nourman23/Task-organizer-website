@@ -347,25 +347,28 @@ let completeTask=[]
           for(let j=0 ; j<element.tasks.length;j++){
             
             if(element.tasks[j].completed==true){
-                // completeTask.push(element.tasks[j])
-                if(element.tasks.length==1){
-                    completeTask.push(element.tasks[j])
-                    deleteCard(element.tasks[j].idDOM)
-                    element.tasks.splice(0, 1);
-                }
-                
-                else{
-                    deleteCard(element.tasks[j].idDOM)
-                    element.tasks.splice(j, 1);
-                }
-               
-            
+                completeTask.push(element.tasks[j])
             }
-            // for(let i=0 ; i<completeTask.length;i++){
-            //     deleteCard(completeTask[i].idDOM)
-            // }
+
          
         }
+        completeTask.forEach(e=>{
+          
+          for(let i=0;i<element.tasks.length;i++){
+            if(  element.tasks[i].idDOM==e.idDOM){
+              deleteCard(e.idDOM)
+            if(element.tasks.length==1){
+              element.tasks.splice(0, 1);
+          }
+          
+          else{
+              element.tasks.splice(i, 1);
+          }
+        }
+          }
+         
+        })
+
         localStorage.setItem('user', JSON.stringify(user));
        
         
