@@ -12,7 +12,7 @@
 
 [Trello board](https://trello.com/b/p96CV7SC/task-organizer-website)
 
-## Languages :
+## Language:
 
     JavaScript
     HTML/CSS
