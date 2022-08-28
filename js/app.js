@@ -79,7 +79,7 @@ function createCard(task, id) {
 
 
   let checkboxDiv = document.createElement("div");
-  checkboxDiv.className = "input-group-text";
+  checkboxDiv.className = "input-group-text me-lg-3 me-md-3 me-sm-3 me-3";
   checkboxDiv.setAttribute(
     "style",
     "border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
@@ -100,7 +100,7 @@ function createCard(task, id) {
   checkboxContaner.append(divPriority);
 
   let spanPriority = document.createElement("span");
-  spanPriority.className = "input-group-text position-absolute end-0";
+  spanPriority.className = "input-group-text";
   spanPriority.id = "inputGroup-sizing-default";
   spanPriority.textContent = task.priority;
 

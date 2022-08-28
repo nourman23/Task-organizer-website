@@ -171,18 +171,7 @@
   overflow: hidden;
 }
 
-.container {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-}
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 90%;
-  margin: 50px auto;
-}
 
 .card-text {
   height: 125px;
@@ -192,7 +181,6 @@
 }
 
 #cards .card {
-  width: 24rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   border: none;
 }
@@ -211,7 +199,7 @@
 
 #cards .card div.input-group .input-group-text:nth-child(1),
 #cards .card div.input-group .input-group-text:nth-child(3) {
-  width: 120px;
+  width: 94px;
   text-align: center;
 }
 
@@ -308,9 +296,7 @@ nav .btn:hover {
   font-size: 0.7rem;
 }
 
-.flex-col {
-  flex-direction: column;
-}
+
 
 .social-list {
   margin: 2rem 0;
@@ -388,14 +374,6 @@ nav .btn:hover {
   transform: scale(1);
 }
 
-.content-row {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 6;
-  width: 100%;
-}
 
 .text {
   margin: 4rem;
@@ -496,26 +474,10 @@ nav .btn:hover {
     transform: translateY(0);
   }
 
-  .content-row {
-    align-items: flex-start !important;
-  }
 
-  .content-row .col {
-    transform: translateY(0);
-    background-color: unset;
-  }
 
-  .col {
-    width: 100%;
-    position: absolute;
-    padding: 2rem;
 
-    background-color: var(--white);
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    transform: translateY(100%);
-    transition: 1s ease-in-out;
-  }
+
 
   .form,
   .social-list {
