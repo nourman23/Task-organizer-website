@@ -13,7 +13,7 @@ allcards.append(row);
 function createCard(task, id) {
   // card container
   let col = document.createElement("div");
-  col.className = "col-sm-7 col-md-6 col-lg-4";
+  col.className = "col-sm-7 col-md-6 col-lg-4 taskCard";
   col.setAttribute("id", id);
   row.append(col);
 

@@ -629,3 +629,8 @@ footer {
   border: none;
   cursor: pointer;
 }
+
+.taskCard:hover{
+  transform: scale(1.05); 
+  transition:transform .5s ease ;
+}
