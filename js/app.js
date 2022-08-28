@@ -6,7 +6,7 @@ let refId = 0;
 let allcards = document.getElementById("cards");
 let row = document.createElement("div");
 row.className = "row";
-row.style.width=" 100%"
+row.style.width = " 100%"
 allcards.append(row);
 
 //create card 
@@ -708,6 +708,41 @@ for (let i = 0; i < user.length; i++) {
 
 }
 //function to remove filter will use it before filter by state and priority
- function autoRemoveFilter() {
+function autoRemoveFilter() {
   without.click()
- }
+}
+
+let darkTheme = document.getElementById("darkTheme");
+darkTheme.onclick = event => {
+  event.preventDefault()
+  document.body.style.background = "black"
+  let sidebar1 = document.getElementById("sidebar1");
+  let card = document.getElementById("card");
+  let inputDescription = document.getElementById("inputDescription");
+  let nav = document.getElementById("nav");
+  sidebar1.style.background = "#212124"
+  card.style.background = "#212124"
+  card.style.color = "white"
+  inputDescription.style.background = "#212124"
+  nav.classList.remove("bg-light")
+  nav.style.background = "#212124"
+
+  let cards = document.getElementsByClassName("card-header")
+  let cardsBody = document.getElementsByClassName("card-body")
+  let inputGroupText = document.getElementsByClassName("input-group-text")
+  console.log(cards);
+  for (let index = 0; index < cards.length; index++) {
+    const element = cards[index];
+    element.classList.add("darkThemeCard")
+  }
+
+  for (let index = 0; index < cardsBody.length; index++) {
+    const element = cardsBody[index];
+    element.classList.add("darkThemeCardBody")
+  }
+
+  for (let index = 0; index < inputGroupText.length; index++) {
+    const element = inputGroupText[index];
+    element.classList.add("completeDarkTheme")
+  }
+}
