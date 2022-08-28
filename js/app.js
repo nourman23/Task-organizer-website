@@ -219,7 +219,7 @@ saveButton.onclick = (event) => {
   } else if (normalR.checked) {
     priority = "Normal";
   } else {
-    priority = "Low priority";
+    priority = "Low";
   }
   let dateValid = document.getElementById("dateValid");
   let titleValid = document.getElementById("titleValid");
@@ -416,7 +416,7 @@ priorityLow.onclick = event => {
     const element = taskArray[index];
     for (let index = 0; index < element.length; index++) {
       const task = element[index];
-      if (task.priority != "Low priority") {
+      if (task.priority != "Low") {
         let id = (task.idDOM).toString()
         let card = document.getElementById(id)
 
@@ -631,7 +631,7 @@ function edit(id) {
   editInputTitle.value = cardTitle.textContent
   editInputDescription.value = cardDetails.textContent
 
-  if (priority.textContent == "Low priority") {
+  if (priority.textContent == "Low") {
     editLowR.setAttribute("checked", "true")
   } else if (priority.textContent == "Critical") {
     editCriticalR.setAttribute("checked", "true")
@@ -662,7 +662,7 @@ function saveChange(id) {
   } else if (editNormalR.checked) {
     priorityEdit = "Normal";
   } else {
-    priorityEdit = "Low priority";
+    priorityEdit = "Low";
   }
 
   priority.textContent = priorityEdit
