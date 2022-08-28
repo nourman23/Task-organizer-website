@@ -68,7 +68,7 @@ function createCard(task, id) {
 
   // create complete task checkbox
   let checkboxContaner = document.createElement("div");
-  checkboxContaner.className = "input-group mb-0";
+  checkboxContaner.className = "input-group justify-content-center mb-0";
   cardBody.append(checkboxContaner);
 
   let completeTask = document.createElement("span");
@@ -338,6 +338,7 @@ let priorityLow = document.getElementById("priorityLow");
 // event handler for priorityCritical 
 priorityCritical.onclick = event => {
   event.preventDefault()
+  autoRemoveFilter()
 
   // array for stor task 
   let taskArray = []
@@ -371,6 +372,7 @@ priorityCritical.onclick = event => {
 
 priorityNormal.onclick = event => {
   event.preventDefault()
+  autoRemoveFilter()
   let taskArray = []
   for (let index = 0; index < user.length; index++) {
     const element = user[index];
@@ -400,6 +402,7 @@ priorityNormal.onclick = event => {
 
 priorityLow.onclick = event => {
   event.preventDefault()
+  autoRemoveFilter()
 
   let taskArray = []
 
@@ -458,6 +461,7 @@ function completedTasks(id) {
 let completeState = document.getElementById("completeState");
 completeState.onclick = event => {
   event.preventDefault()
+  autoRemoveFilter()
   let taskArray = []
   for (let index = 0; index < user.length; index++) {
     const element = user[index];
@@ -489,6 +493,8 @@ let incompleteState = document.getElementById("incompleteState");
 
 incompleteState.onclick = event => {
   event.preventDefault()
+  autoRemoveFilter()
+
 
   let taskArray = []
   for (let index = 0; index < user.length; index++) {
@@ -703,3 +709,7 @@ for (let i = 0; i < user.length; i++) {
   }
 
 }
+//function to remove filter will use it before filter by state and priority
+ function autoRemoveFilter() {
+  without.click()
+ }
