@@ -100,9 +100,8 @@
     <nav>
       <nav class="navbar navbar-expand-md bg-light ">
         <form class="container-fluid justify-content-start">
-          <div class="navbar-brand text-light ps-5"><img src="Image/programming.png" alt="Logo" width="40px"
-              height="30px"></div>
-          </div>
+          <i class="fa-solid fa-list-check ms-3" style="font-size: 37px;cursor:auto; color: #497faf;
+          "></i>
           <div style="position:absolute ; right:20px  ; top:10px;">
             <button class="btn  ms-auto"><span id="navbarIcon1"><img src="Image/moon.png" alt="Color"
                   height="20px" width="20px"></span></button>
@@ -170,7 +169,7 @@
         </ul>
       </nav>
       
-
+<div class="col-1"></div>
       <!-- Task form  -->
 
       <div class="col-md-1 col-sm-1"></div>
@@ -226,7 +225,7 @@
           </div>
           <!-- Save button -->
           <div class="buttons">
-            <button type="button" class="btn " id="saveNewTask">
+            <button type="button" class="btn " id="saveNewTask" style="margin: 20px;">
               ADD
             </button>
           </div>
@@ -256,7 +255,9 @@
         </div>
       </div>
     </div>
-    <div id="cards"></div>
+    <div id="cards">
+      <h3>YOUR TASKS</h3>
+    </div>
 
     <!-- welcomeModal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -267,7 +268,7 @@
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content"
-            style=" border-color: #2421fc ; background-color:white; padding: 20px; box-shadow:hsl(240, 100%, 64%)  2px 5px 7px;">
+            style=" box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; background-color:white; padding: 20px;">
             <div class="modal-header">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

@@ -6,6 +6,7 @@ let refId = 0;
 let allcards = document.getElementById("cards");
 let row = document.createElement("div");
 row.className = "row";
+row.style.width=" 100%"
 allcards.append(row);
 
 //create card 
@@ -13,7 +14,7 @@ allcards.append(row);
 function createCard(task, id) {
   // card container
   let col = document.createElement("div");
-  col.className = "col-sm-7 col-md-6 col-lg-4 taskCard";
+  col.className = "col-sm-12 col-md-6 col-lg-4 taskCard";
   col.setAttribute("id", id);
   row.append(col);
 
@@ -79,7 +80,7 @@ function createCard(task, id) {
 
 
   let checkboxDiv = document.createElement("div");
-  checkboxDiv.className = "input-group-text me-lg-3 me-md-3 me-sm-3 me-3";
+  checkboxDiv.className = "input-group-text me-lg-3 me-md-3 me-sm-3 me-3 p-0";
   checkboxDiv.setAttribute(
     "style",
     "border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
@@ -87,7 +88,7 @@ function createCard(task, id) {
   checkboxContaner.append(checkboxDiv);
 
   let inputCheckbox = document.createElement("input");
-  inputCheckbox.className = "form-check-input mt-0";
+  inputCheckbox.className = "form-check-input mt-0 w-100 h-100";
   inputCheckbox.id = `compete-${id}`;
   inputCheckbox.type = "checkbox";
   inputCheckbox.value = '"';
@@ -132,9 +133,6 @@ function createCard(task, id) {
   cardFooter.append(saveSpan);
 
 
-  let saveIcon = document.createElement("i");
-  saveIcon.className = "fa-solid fa-circle-check";
-  saveSpan.append(saveIcon);
   id++;
 
 
