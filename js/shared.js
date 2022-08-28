@@ -1,4 +1,4 @@
-// Task class take 6 params this function will carry task object
+// Task object take 6 params this function will carry task object
 class Task {
   constructor(title, date, startDate ,details, priority,idDOM, completed = false) {
     this.title = title;

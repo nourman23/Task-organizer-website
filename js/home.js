@@ -1,7 +1,7 @@
 
 
 let container = document.getElementById('container')
-
+// switch login sign up form
 toggle = () => {
 	container.classList.toggle('sign-in')
 	container.classList.toggle('sign-up')
@@ -21,21 +21,26 @@ let passwordError = document.getElementById("passwordError");
 
 // localStorage function
 
+// declare empty array to store local storage 
 let userArray = []
 
+// get data from local storage user is object in local storage
 function getDataFromLocal() {
 	return JSON.parse(localStorage.getItem("user"))
 }
 
+// get data in local storage take array  
 function setDataInLocal(userArray) {
+	// JSON.stringify(userArray) to convert javaScript oject to JSON 
 	localStorage.setItem("user", JSON.stringify(userArray))
 }
 
-
+// check if local storage have item (user) if true get data and stor it in userArray 
 if (getDataFromLocal()) {
 	userArray = getDataFromLocal()
 }
 
+// keep me logged in: the for loop for check if there user logged in if true go direct to task page 
 for (let index = 0; index < userArray.length; index++) {
 	const element = userArray[index];
 	if (element.isLogged) {
@@ -45,16 +50,20 @@ for (let index = 0; index < userArray.length; index++) {
 
 }
 
-
+// sign in event handler 
 signInBtn.onclick = event => {
+	// loop for check if the email and password is match in local storage
 	for (let index = 0; index < userArray.length; index++) {
 		const element = userArray[index];
 		if (element.email == signInUserName.value && element.password == signInPassword.value) {
+			// if there matched change isLogged flag to true
 			element.isLogged = true
+			// after update isLogged update local storage
 			setDataInLocal(userArray);
 			location.href = "tasks.html"
 			break;
 		} else {
+			// if there no match display password error 
 			passwordError.style.display = "block"
 		}
 
@@ -87,14 +96,18 @@ let passwordInvalidMassage = document.getElementById("passwordInvalidMassage")
 let passwordMatchInvalidMassage = document.getElementById("passwordMatchInvalidMassage")
 let emailExistMassage = document.getElementById("emailExistMassage")
 
-
+// sign up event handler
 signupBtn.onclick = event => {
+	// check if email valid
 	const emailValid = Validation.EmailValidation(signupEmail.value)
+	// check if user name valid
 	const usernameValid = Validation.NameValidation(signupUserName.value)
+	// we disable it for test 
 	// const passwordValid = Validation.NameValidation(signupPassword.value)
 	// const passwordConfirmValid = Validation.NameValidation(signupPasswordConfirm.value)
+	// check if password match 
 	const matchPassword = Validation.MatchPassword(signupPassword.value, signupPasswordConfirm.value)
-
+	// check duplicate email
 	const checkUserIfExistByEmail = Validation.checkUserIfExistByEmail(signupEmail.value)
 
 	if (!emailValid) {
@@ -134,12 +147,18 @@ signupBtn.onclick = event => {
 
 }
 
+
 function createNewUser(signupEmail, signupUserName, signupPassword) {
 	let name = signupUserName.split(" ");
+	// create new user object
 	let newUser = new User(name[0], name[1], signupEmail, signupPassword)
+	// change flag to true
 	newUser.isLogged = true
+	// add new user to user array
 	userArray.push(newUser)
+	// save new user to local storage
 	setDataInLocal(userArray)
+	// go to task page
 	location.href = "tasks.html"
 
 	console.log(newUser);
@@ -195,12 +214,13 @@ class Validation {
 
 
 //show pass task 
-
 function showPass(icon, pass) {
 	if (pass.type === "password") {
+		// change type input tp text to show password
 		pass.type = "text";
 		icon.name = "eye-off-outline"
 	} else {
+		// if type is text change it to password 
 		pass.type = "password";
 		icon.name = "eye-outline"
 	}
