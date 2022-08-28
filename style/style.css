@@ -93,6 +93,9 @@
 
 .taskB {
   color: rgb(84, 83, 83);
+  background-image: url(https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .taskform .card {
@@ -185,6 +188,7 @@
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  color: #396387;
 }
 #cards .card {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
