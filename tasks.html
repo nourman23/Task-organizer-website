@@ -40,11 +40,11 @@
 
 .content h2:nth-child(1) {
   color: transparent;
-  -webkit-text-stroke: 3px #00abe9fe;
+  -webkit-text-stroke: 3px #497faf;
 }
 
 .content h2:nth-child(2) {
-  color: #2e43ff;
+  color: #3e6689;
   animation: animate 0.5s ease-in-out infinite;
 }
 
@@ -98,12 +98,12 @@
 <body class="taskB">
   <header>
     <nav>
-      <nav class="navbar navbar-expand-md bg-light " id="nav">
+      <nav class="navbar navbar-expand-md bg-light ">
         <form class="container-fluid justify-content-start">
           <i class="fa-solid fa-list-check ms-3" style="font-size: 37px;cursor:auto; color: #396387;
           "></i>
           <div style="position:absolute ; right:20px  ; top:10px;">
-            <button class="btn  ms-auto"><span id="navbarIcon1"><img src="Image/moon.png" alt="Color" id="darkTheme"
+            <button class="btn  ms-auto"><span id="navbarIcon1"><img src="Image/moon.png" alt="Color"
                   height="20px" width="20px"></span></button>
             <button class="btn  me-5"> <span id="navbarIcon2"><img src="Image/sun.png" alt="Color"
                   height="20px" width="20px"></span></button>
@@ -175,9 +175,9 @@
       <div class="col-md-1 col-sm-1"></div>
 
       <div class="taskform col-md-6 col-sm-9" >
-        <h3 class="title text-center" style="color: #396387;">NEW TASK</h3>
+        <h3 class="title text-center" style="color: #396387;letter-spacing: 2px;">NEW TASK</h3>
 
-        <div class="card" id="card">
+        <div class="card">
           <!-- Title input -->
           <h6 class="text-center text-danger" id="titleValid" style="margin: 0; padding: 0; font-size: 0.8rem; display: none;">Enter
             Title to Create New Task</h6>
@@ -191,7 +191,6 @@
           <!-- Date input -->
           <h6 class="text-center text-danger" id="dateValid" style="margin: 0; padding: 0; font-size: 0.8rem; display: none;">Can't
             start date be after end date </h6>
-
           <div class="input-group input-daterange mb-3">
             <div class="input-group-addon">Date:&nbsp;</div>
             <input id="startDate" type="date" class="form-control" placeholder="2012-04-05" />
@@ -276,7 +275,7 @@
             <!-- responsize and mack introduction page Turkyeh -->
             <div class="modal-body">
               <form>
-                <h5 class="carousel-item__subtitle"><i class="fa fa-spinner fa-spin"></i> Welcome in your </h5>
+                <h5 class="carousel-item__subtitle"><i class="fa fa-spinner fa-spin" style="    color: #497faf;"></i> Welcome in your </h5>
                 <section><br><br>
                   <div class="content carousel-item__title">
                     <h2>MANAGEMENT TASK SYSTEAM</h2>
@@ -284,16 +283,16 @@
                   </div>
                 </section><br><br><br>
                 <!-- <h1 class="carousel-item__title">MANAGEMENT TASK SYSTEAM </h1><br> -->
-                <p class="carousel-item__description">You can control the creation<br> and
-                  management of tasks <br>track their flowchart
-                  <br> in
-                  addition to adding your own modifications in <br>a professional manner.
+                <p class="carousel-item__description w-50">You can control the creation and
+                  management of tasks track their flowchart
+                  in
+                  addition to adding your own modifications in a professional manner.
                 </p>
               </form>
             </div>
             <br><br><br>
             <div class="col-md-3.ms-auto">
-              <img src="https://i.pinimg.com/originals/e6/a9/1c/e6a91cf71ae7ef9c95cf6518852eddb5.gif" style="position:absolute; top:40% ; left: 60%; position:absolute;width:25vw;
+              <img src="./image/to-do.png" style="position:absolute; top:30% ; left: 55%; position:absolute;width:25vw;
             transition: 1s ease-in-out;
             transition-delay: .4s;
             
@@ -302,7 +301,7 @@
             <center>
               <!-- finish this part here  -->
               <div class="modal-footer" style="position:absolute; top:70% ; left: 10%;">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 200px; ;">Start
+                <button type="button" class="btn" data-bs-dismiss="modal" style="width: 200px; background-color: #497faf;color: white;">Start
                   now</button>
               </div>
             </center>
