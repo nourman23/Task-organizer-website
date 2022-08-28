@@ -13,7 +13,7 @@ allcards.append(row);
 function createCard(task, id) {
   // card container
   let col = document.createElement("div");
-  col.className = "col-sm-7 col-md-6 col-lg-4";
+  col.className = "col-sm-7 col-md-6 col-lg-4 taskCard";
   col.setAttribute("id", id);
   row.append(col);
 
@@ -79,7 +79,7 @@ function createCard(task, id) {
 
 
   let checkboxDiv = document.createElement("div");
-  checkboxDiv.className = "input-group-text";
+  checkboxDiv.className = "input-group-text me-lg-3 me-md-3 me-sm-3 me-3";
   checkboxDiv.setAttribute(
     "style",
     "border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
@@ -100,9 +100,21 @@ function createCard(task, id) {
   checkboxContaner.append(divPriority);
 
   let spanPriority = document.createElement("span");
-  spanPriority.className = "input-group-text position-absolute end-0";
+  spanPriority.className = "input-group-text";
   spanPriority.id = "inputGroup-sizing-default";
   spanPriority.textContent = task.priority;
+
+  if (task.priority == "Normal") {
+    spanPriority.style.backgroundColor = "orange"
+    spanPriority.style.color = "white"
+  } else if (task.priority == "Critical") {
+    spanPriority.style.backgroundColor = "red"
+    spanPriority.style.color = "white"
+  } else if (task.priority) {
+    spanPriority.style.backgroundColor = "rgb(16 165 16)"
+    spanPriority.style.color = "white"
+  }
+
   spanPriority.id = `priority-${id}`
   divPriority.append(spanPriority);
 
@@ -207,7 +219,7 @@ saveButton.onclick = (event) => {
   } else if (normalR.checked) {
     priority = "Normal";
   } else {
-    priority = "Low priority";
+    priority = "Low";
   }
   let dateValid = document.getElementById("dateValid");
   let titleValid = document.getElementById("titleValid");
@@ -404,7 +416,7 @@ priorityLow.onclick = event => {
     const element = taskArray[index];
     for (let index = 0; index < element.length; index++) {
       const task = element[index];
-      if (task.priority != "Low priority") {
+      if (task.priority != "Low") {
         let id = (task.idDOM).toString()
         let card = document.getElementById(id)
 
@@ -619,7 +631,7 @@ function edit(id) {
   editInputTitle.value = cardTitle.textContent
   editInputDescription.value = cardDetails.textContent
 
-  if (priority.textContent == "Low priority") {
+  if (priority.textContent == "Low") {
     editLowR.setAttribute("checked", "true")
   } else if (priority.textContent == "Critical") {
     editCriticalR.setAttribute("checked", "true")
@@ -650,7 +662,7 @@ function saveChange(id) {
   } else if (editNormalR.checked) {
     priorityEdit = "Normal";
   } else {
-    priorityEdit = "Low priority";
+    priorityEdit = "Low";
   }
 
   priority.textContent = priorityEdit
