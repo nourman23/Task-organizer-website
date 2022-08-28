@@ -68,7 +68,7 @@ function createCard(task, id) {
 
   // create complete task checkbox
   let checkboxContaner = document.createElement("div");
-  checkboxContaner.className = "input-group mb-0";
+  checkboxContaner.className = "input-group justify-content-center mb-0";
   cardBody.append(checkboxContaner);
 
   let completeTask = document.createElement("span");
