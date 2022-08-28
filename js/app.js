@@ -103,6 +103,18 @@ function createCard(task, id) {
   spanPriority.className = "input-group-text position-absolute end-0";
   spanPriority.id = "inputGroup-sizing-default";
   spanPriority.textContent = task.priority;
+
+  if (task.priority == "Normal") {
+    spanPriority.style.backgroundColor = "orange"
+    spanPriority.style.color = "white"
+  } else if (task.priority == "Critical") {
+    spanPriority.style.backgroundColor = "red"
+    spanPriority.style.color = "white"
+  } else if (task.priority) {
+    spanPriority.style.backgroundColor = "rgb(16 165 16)"
+    spanPriority.style.color = "white"
+  }
+
   spanPriority.id = `priority-${id}`
   divPriority.append(spanPriority);
 
