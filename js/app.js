@@ -118,13 +118,13 @@ function createCard(task, id) {
 
   if (task.priority == "Normal") {
     spanPriority.style.color = "green";
-    card.style.boxShadow = "3px 3px 20px 5px rgb(0 255 52 / 58%)";
+    card.style.boxShadow = "0px 1px 14px 0px rgb(54 185 80)";
   } else if (task.priority == "Critical") {
     spanPriority.style.color = "red";
-    card.style.boxShadow = "3px 3px 20px 5px rgb(173 13 8 / 79%)";
+    card.style.boxShadow = " 0px 1px 14px 0px rgb(173 13 8 / 79%)";
   } else if (task.priority) {
     spanPriority.style.color = "blue";
-    card.style.boxShadow = "3px 3px 20px 5px rgb(0 53 255 / 61%) ";
+    card.style.boxShadow = "0px 1px 14px 0px rgb(0 53 255 / 61%) ";
   }
 
   spanPriority.id = `priority-${id}`;
