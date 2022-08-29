@@ -105,13 +105,13 @@ function createCard(task, id) {
   spanPriority.textContent = task.priority;
 
   if (task.priority == "Normal") {
-    spanPriority.style.color = "orange";
+    spanPriority.style.color = "green";
     card.style.boxShadow = "3px 3px 20px 5px rgb(0 255 52 / 58%)";
   } else if (task.priority == "Critical") {
     spanPriority.style.color = "red";
     card.style.boxShadow = "3px 3px 20px 5px rgb(173 13 8 / 79%)";
   } else if (task.priority) {
-    spanPriority.style.color = "rgb(16 165 16)";
+    spanPriority.style.color = "blue";
     card.style.boxShadow = "3px 3px 20px 5px rgb(0 53 255 / 61%) ";
   }
 
