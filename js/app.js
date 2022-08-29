@@ -337,12 +337,8 @@ let priorityCritical = document.getElementById("priorityCritical");
 let priorityNormal = document.getElementById("priorityNormal");
 let priorityLow = document.getElementById("priorityLow");
 
-// event handler for priorityCritical
-priorityCritical.onclick = (event) => {
-  event.preventDefault();
-  autoRemoveFilter();
 
-  // array for stor task
+function getUser() {
   let taskArray = [];
   // get task and push it in to taskArray
   for (let index = 0; index < user.length; index++) {
@@ -351,6 +347,15 @@ priorityCritical.onclick = (event) => {
       taskArray.push(element.tasks);
     }
   }
+  return taskArray;
+}
+// event handler for priorityCritical
+priorityCritical.onclick = (event) => {
+  event.preventDefault();
+  autoRemoveFilter();
+
+  // array for stor task
+  let taskArray = getUser();
 
   for (let index = 0; index < taskArray.length; index++) {
     const element = taskArray[index];
@@ -396,15 +401,8 @@ priorityLow.onclick = (event) => {
   event.preventDefault();
   autoRemoveFilter();
 
-  let taskArray = [];
+  let taskArray = getUser();
 
-  for (let index = 0; index < user.length; index++) {
-    const element = user[index];
-    if (element.isLogged) {
-      // console.log(element);
-      taskArray.push(element.tasks);
-    }
-  }
 
   for (let index = 0; index < taskArray.length; index++) {
     const element = taskArray[index];
@@ -443,14 +441,8 @@ let completeState = document.getElementById("completeState");
 completeState.onclick = (event) => {
   event.preventDefault();
   autoRemoveFilter();
-  let taskArray = [];
-  for (let index = 0; index < user.length; index++) {
-    const element = user[index];
-    if (element.isLogged) {
-      // console.log(element);
-      taskArray.push(element.tasks);
-    }
-  }
+  let taskArray = getUser();
+
 
   for (let index = 0; index < taskArray.length; index++) {
     const element = taskArray[index];
@@ -475,14 +467,8 @@ incompleteState.onclick = (event) => {
   event.preventDefault();
   autoRemoveFilter();
 
-  let taskArray = [];
-  for (let index = 0; index < user.length; index++) {
-    const element = user[index];
-    if (element.isLogged) {
-      // console.log(element);
-      taskArray.push(element.tasks);
-    }
-  }
+  let taskArray = getUser();
+
 
   for (let index = 0; index < taskArray.length; index++) {
     const element = taskArray[index];
