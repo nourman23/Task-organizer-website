@@ -337,7 +337,7 @@ let priorityCritical = document.getElementById("priorityCritical");
 let priorityNormal = document.getElementById("priorityNormal");
 let priorityLow = document.getElementById("priorityLow");
 
-
+// get user who logged in 
 function getUser() {
   let taskArray = [];
   // get task and push it in to taskArray
