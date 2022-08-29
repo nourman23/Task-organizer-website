@@ -1,6 +1,6 @@
 // side_tasks-form
 let refId = 0;
-let darkThemeFlag=false
+let darkThemeFlag = false
 ////////////////////////////////////
 // Create Card after save
 // crate continuer
@@ -67,7 +67,7 @@ function createCard(task, id) {
   let cardBody = document.createElement("div");
   cardBody.className = "card-body";
   if (darkThemeFlag) {
-    
+
   }
   card.append(cardBody);
 
@@ -349,9 +349,15 @@ function getUser() {
   }
   return taskArray;
 }
+let criticalFilter = false;
 // event handler for priorityCritical
 priorityCritical.onclick = (event) => {
   event.preventDefault();
+  criticalFilter = true;
+  if (completedFilter || incompleteFilter) {
+    checkFilter()
+    return
+  }
   autoRemoveFilter();
 
   // array for stor task
@@ -371,8 +377,14 @@ priorityCritical.onclick = (event) => {
   }
 };
 
+let normalFilter = false
 priorityNormal.onclick = (event) => {
   event.preventDefault();
+  if (completedFilter || incompleteFilter) {
+    checkFilter()
+    return
+  }
+  normalFilter = true;
   autoRemoveFilter();
   let taskArray = [];
   for (let index = 0; index < user.length; index++) {
@@ -397,10 +409,15 @@ priorityNormal.onclick = (event) => {
   }
 };
 
+let lowFilter = false
 priorityLow.onclick = (event) => {
+  lowFilter = true
   event.preventDefault();
+  if (completedFilter || incompleteFilter) {
+    checkFilter()
+    return
+  }
   autoRemoveFilter();
-
   let taskArray = getUser();
 
 
@@ -436,10 +453,16 @@ function completedTasks(id) {
   }
 }
 
+let completedFilter = false
 // filter bu complete state
 let completeState = document.getElementById("completeState");
 completeState.onclick = (event) => {
   event.preventDefault();
+  completedFilter = true
+  if (criticalFilter || normalFilter || lowFilter) {
+    checkFilter()
+    return
+  }
   autoRemoveFilter();
   let taskArray = getUser();
 
@@ -462,14 +485,17 @@ completeState.onclick = (event) => {
 }
 
 let incompleteState = document.getElementById("incompleteState");
+let incompleteFilter = false
 
 incompleteState.onclick = (event) => {
   event.preventDefault();
+  incompleteFilter = true
+  if (criticalFilter || normalFilter || lowFilter) {
+    checkFilter()
+    return
+  }
   autoRemoveFilter();
-
   let taskArray = getUser();
-
-
   for (let index = 0; index < taskArray.length; index++) {
     const element = taskArray[index];
     for (let index = 0; index < element.length; index++) {
@@ -679,7 +705,7 @@ darkTheme.onclick = (event) => {
   card.style.background = "#212124"
   card.style.color = "white"
   inputDescription.style.background = "#212124"
-  inputDescription.style.color="white"
+  inputDescription.style.color = "white"
   nav.classList.remove("bg-light")
   nav.style.background = "#212124"
 
@@ -701,5 +727,112 @@ darkTheme.onclick = (event) => {
     const element = inputGroupText[index];
     element.classList.add("completeDarkTheme");
   }
-  darkThemeFlag = true 
+  darkThemeFlag = true
 }
+
+// check if any filter selected  
+function checkFilter() {
+
+  if (completedFilter && criticalFilter) {
+    autoRemoveFilter();
+    let userArray = getUser()
+    userArray.forEach(tasks => {
+      console.log(tasks);
+      tasks.forEach(task => {
+        if (!(task.completed && task.priority == "Critical")) {
+          let id = task.idDOM.toString();
+          let card = document.getElementById(id);
+          console.log(card);
+          card.style.display = "none";
+        }
+      })
+    })
+  }
+
+  if (completedFilter && normalFilter) {
+    autoRemoveFilter();
+    let userArray = getUser()
+    userArray.forEach(tasks => {
+      console.log(tasks);
+      tasks.forEach(task => {
+        if (!(task.completed && task.priority == "Normal")) {
+          let id = task.idDOM.toString();
+          let card = document.getElementById(id);
+          console.log(card);
+          card.style.display = "none";
+        }
+      })
+    })
+  }
+
+  if (completedFilter && lowFilter) {
+    autoRemoveFilter();
+    let userArray = getUser()
+    userArray.forEach(tasks => {
+      console.log(tasks);
+      tasks.forEach(task => {
+        if (!(task.completed && task.priority == "Low")) {
+          let id = task.idDOM.toString();
+          let card = document.getElementById(id);
+          console.log(card);
+          card.style.display = "none";
+        }
+      })
+    })
+  }
+
+
+  if (incompleteFilter && criticalFilter) {
+    autoRemoveFilter();
+    let userArray = getUser()
+    userArray.forEach(tasks => {
+      console.log(tasks);
+      tasks.forEach(task => {
+        if (!(task.completed == false && task.priority == "Critical")) {
+          let id = task.idDOM.toString();
+          let card = document.getElementById(id);
+          console.log(card);
+          card.style.display = "none";
+        }
+      })
+    })
+  }
+
+  if (incompleteFilter && normalFilter) {
+    autoRemoveFilter();
+    let userArray = getUser()
+    userArray.forEach(tasks => {
+      console.log(tasks);
+      tasks.forEach(task => {
+        if (!(task.completed == false && task.priority == "Normal")) {
+          let id = task.idDOM.toString();
+          let card = document.getElementById(id);
+          console.log(card);
+          card.style.display = "none";
+        }
+      })
+    })
+  }
+
+  if (incompleteFilter && lowFilter) {
+    autoRemoveFilter();
+    let userArray = getUser()
+    userArray.forEach(tasks => {
+      console.log(tasks);
+      tasks.forEach(task => {
+        if (!(task.completed == false && task.priority == "Low")) {
+          let id = task.idDOM.toString();
+          let card = document.getElementById(id);
+          console.log(card);
+          card.style.display = "none";
+        }
+      })
+    })
+  }
+  incompleteFilter = false
+  completedFilter = false
+  criticalFilter = false
+  normalFilter = false
+  lowFilter = false
+}
+
