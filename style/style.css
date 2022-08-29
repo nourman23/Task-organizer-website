@@ -197,7 +197,7 @@
 }
 
 #cards .card .card-header {
-  background-color: white !important;
+  background-color: white
 }
 
 #cards .card div.input-group .input-group-text {
@@ -642,3 +642,18 @@ input[type="checkbox"] {
 input[type="checkbox"]:hover {
   accent-color: green !important;
 }
+
+.darkThemeCard {
+  background-color: #212124 !important;
+  /* border: 0.5px solid white; */
+}
+
+.darkThemeCardBody {
+  background-color: #212124 !important;
+  color: white;
+}
+
+.completeDarkTheme {
+  color: white;
+  background-color: #212124 !important;
+} 
