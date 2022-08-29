@@ -505,7 +505,6 @@ li:last-child {
 .index ion-icon {
   position: absolute;
   top: 50%;
-
   transform: translateY(-50%);
   font-size: 1.4rem;
   color: var(--gray-2);
