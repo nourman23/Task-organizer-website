@@ -1,5 +1,6 @@
 // side_tasks-form
 let refId = 0;
+let darkThemeFlag=false
 ////////////////////////////////////
 // Create Card after save
 // crate continuer 
@@ -22,10 +23,17 @@ function createCard(task, id) {
   // card container
   let card = document.createElement("div");
   card.className = "card text-center m-3";
+  if (darkThemeFlag) {
+    card.style.background = "#212124"
+    card.style.color = "white"
+  }
   col.append(card);
   // create card header (card title, edit and delete icon)
   let cardHeader = document.createElement("div");
   cardHeader.className = "card-header d-flex justify-content-between";
+  if (darkThemeFlag) {
+    cardHeader.classList.add("darkThemeCard")
+  }
   card.append(cardHeader);
   // card title
   let spanTaskTitle = document.createElement("span");
@@ -58,6 +66,9 @@ function createCard(task, id) {
   // create card Body container 
   let cardBody = document.createElement("div");
   cardBody.className = "card-body";
+  if (darkThemeFlag) {
+    
+  }
   card.append(cardBody);
 
   // create card Text
@@ -724,6 +735,7 @@ darkTheme.onclick = event => {
   card.style.background = "#212124"
   card.style.color = "white"
   inputDescription.style.background = "#212124"
+  inputDescription.style.color="white"
   nav.classList.remove("bg-light")
   nav.style.background = "#212124"
 
@@ -745,4 +757,5 @@ darkTheme.onclick = event => {
     const element = inputGroupText[index];
     element.classList.add("completeDarkTheme")
   }
+  darkThemeFlag = true 
 }
